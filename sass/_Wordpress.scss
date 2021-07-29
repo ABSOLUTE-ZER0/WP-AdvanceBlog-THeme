@@ -203,7 +203,7 @@
     font-weight: 500;
     border-bottom: 2px solid var(--color-hover);
     color: var(--color-text);
-    width: fit-content;
+    width: fit-content; 
     padding-right: 5rem;
     margin-top: 5rem;
     display: flex;
@@ -223,7 +223,7 @@
         border: 0.2rem solid var(--color-active);
         color: var(--color-background);
         font-weight: 400;
-        -webkit-appearance: button;
+        appearance: button;
         text-transform: capitalize;
 
         &:hover {

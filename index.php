@@ -7,84 +7,87 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
   <?php if($paged == 1){ ?>
 
   <div class="blogpage__highlights">
-    <div class="blogpage__highlights-main box-shadow">
-      <div class="blogpage__highlights-main-image"></div>
+
+    <?php 
+        $sticky = get_option( 'sticky_posts' );
+        $args = array(
+          'posts_per_page' => 1,
+          'post__in' => $sticky,
+          'ignore_sticky_posts' => 1
+        );
+        $stickyPost = new WP_Query( $args );
+        while ($stickyPost -> have_posts()) {
+          $stickyPost -> the_post(); 
+          $postCategories = get_the_category();?>
+
+    <div onclick="window.location.href = '<?php the_permalink() ?>';" class="blogpage__highlights-main box-shadow">
+      <div class="blogpage__highlights-main-image"
+        style="background-image: url('<?php if(has_post_thumbnail()) { echo get_the_post_thumbnail_url();} else { echo get_theme_file_uri("/images/default.jpg");} ?>');">
+      </div>
       <h1 class="blogpage__highlights-main-title">
-        Some random card title goes here
+        <?php the_title(); ?>
       </h1>
       <div class="blogpage__highlights-main-categories">
-        <p>Buiseness</p>
-        <p>Animal</p>
-        <p>Animal</p>
+        <?php foreach( $postCategories as $category ) { ?>
+        <a href="<?php echo esc_url( get_category_link( $category->term_id ) ) ?>"><?php echo $category->name ?></a>
+        <?php } ?>
       </div>
       <p class="blogpage__highlights-main-desc">
-        s viverra dictum. Maecenas bibendum accumsan pharetra. Nunc a
-        dignissim tortor. Curabitur luctus nisi in risus egestas sodales.
-        Donec blandit felis
+        <?php if(has_excerpt()){
+            echo get_the_excerpt();
+          } else{
+            echo wp_trim_words(get_the_content() , 18); }?>
       </p>
       <div class="blogpage__highlights-main-metadata">
-        <p>By Zero</p>
-        <p><i class="far fa-calendar-alt"></i> Feb 29, 2020</p>
+        <p>By <?php the_author_posts_link(); ?></p>
+        <p><i class="far fa-calendar-alt"></i> <?php the_time('M j, Y'); ?></p>
       </div>
+
+      <?php }; wp_reset_postdata();?>
+
+
+
+
     </div>
 
     <div class="blogpage__highlights-sub">
-      <div class="blogpage__highlights-sub-card box-shadow-2">
-        <img src="./images/test.jpg" class="blogpage__highlights-sub-card-img" />
+
+      <?php // Define our WP Query Parameters
+        $featured = new WP_Query( array(
+          'posts_per_page' => 3,
+          'meta_key' => 'meta-featured',
+          'meta_value' => 'yes',
+          'ignore_sticky_posts' => true,
+      )); 
+
+        while ($featured -> have_posts()) {
+          $featured -> the_post();
+          $postCategories = get_the_category(); ?>
+
+      <div onclick="window.location.href = '<?php the_permalink() ?>';"
+        class="blogpage__highlights-sub-card box-shadow-2">
+        <img class="blogpage__highlights-sub-card-img"
+          src="<?php if(has_post_thumbnail()) { echo get_the_post_thumbnail_url();} else { echo get_theme_file_uri("/images/default.jpg");} ?>" />
         <div class="blogpage__highlights-sub-card-details">
           <h1 class="blogpage__highlights-sub-card-details-title">
-            Some random card title goes here
+            <?php the_title(); ?>
           </h1>
 
           <div class="blogpage__highlights-sub-card-details-categories">
-            <p>Buiseness</p>
-            <p>Animal</p>
+            <?php foreach( $postCategories as $category ) { ?>
+            <a href="<?php echo esc_url( get_category_link( $category->term_id ) ) ?>"><?php echo $category->name ?></a>
+            <?php } ?>
           </div>
           <p class="blogpage__highlights-sub-card-details-desc">
-            s viverra dictum. Maecenas bibendum accumsan pharetra. Nunc a
-            dignissim tortor. Curabitur luctus nisi in risus egestas
-            sodales. Donec blandit felis
+            <?php if(has_excerpt()){
+            echo get_the_excerpt();
+          } else{
+            echo wp_trim_words(get_the_content() , 18); }?>
           </p>
         </div>
       </div>
 
-      <div class="blogpage__highlights-sub-card box-shadow-2">
-        <img src="./images/test.jpg" class="blogpage__highlights-sub-card-img" />
-        <div class="blogpage__highlights-sub-card-details">
-          <h1 class="blogpage__highlights-sub-card-details-title">
-            Some random card title goes here
-          </h1>
-
-          <div class="blogpage__highlights-sub-card-details-categories">
-            <p>Buiseness</p>
-            <p>Animal</p>
-          </div>
-          <p class="blogpage__highlights-sub-card-details-desc">
-            s viverra dictum. Maecenas bibendum accumsan pharetra. Nunc a
-            dignissim tortor. Curabitur luctus nisi in risus egestas
-            sodales. Donec blandit felis
-          </p>
-        </div>
-      </div>
-
-      <div class="blogpage__highlights-sub-card box-shadow-2">
-        <img src="./images/test.jpg" class="blogpage__highlights-sub-card-img" />
-        <div class="blogpage__highlights-sub-card-details">
-          <h1 class="blogpage__highlights-sub-card-details-title">
-            Some random card title goes here
-          </h1>
-
-          <div class="blogpage__highlights-sub-card-details-categories">
-            <p>Buiseness</p>
-            <p>Animal</p>
-          </div>
-          <p class="blogpage__highlights-sub-card-details-desc">
-            s viverra dictum. Maecenas bibendum accumsan pharetra. Nunc a
-            dignissim tortor. Curabitur luctus nisi in risus egestas
-            sodales. Donec blandit felis
-          </p>
-        </div>
-      </div>
+      <?php }; wp_reset_postdata();?>
     </div>
   </div>
 
@@ -97,23 +100,23 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
       <div class="blogpage__main-content-categories">
         <h1 class="titleStyle2">Top Categories</h1>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+          <?php $allCategories = get_categories( array(
+              'orderby'    => 'count',
+              'order'      => 'DESC',
+              'number' => 3
+            )); 
+            
+            foreach ($allCategories as $category) { ?>
           <div class="col">
-            <div class="blogpage__main-content-categories-card box-shadow">
-              <p>category 1</p>
-            </div>
+            <a style='background-image: url(<?php echo z_taxonomy_image_url($category->term_id); ?>);' href='<?php echo esc_url( get_category_link( $category->term_id )); ?>';
+              class="blogpage__main-content-categories-card box-shadow">
+              <p><?php echo $category->name ?></p>
+            </a>
           </div>
 
-          <div class="col">
-            <div class="blogpage__main-content-categories-card box-shadow">
-              <p>category 2</p>
-            </div>
-          </div>
+          <?php }?>
 
-          <div class="col">
-            <div class="blogpage__main-content-categories-card box-shadow">
-              <p>category 3</p>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -146,18 +149,15 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
 
           <?php while ($recentPosts -> have_posts()) {
           $recentPosts -> the_post(); 
-          $categories = get_the_category();?>
+          $postCategories = get_the_category();?>
 
 
           <div class="col">
             <div class="posts-card__hover"></div>
             <div class="card posts-card">
 
-              <?php if(has_post_thumbnail()) { ?>
-              <img class="card-img-top" src="<?php echo get_the_post_thumbnail_url(); ?>" /> <?php } else {
-             ?>
-              <img class="card-img-top" src="<?php echo get_theme_file_uri("/images/default.jpg")?>">
-              <?php }; ?>
+              <img class="card-img-top"
+                src="<?php if(has_post_thumbnail()) { echo get_the_post_thumbnail_url();} else { echo get_theme_file_uri("/images/default.jpg");} ?>" />
               <div class="card-body">
                 <div class="posts-card__title">
                   <a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
@@ -175,7 +175,7 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
                 </div>
 
                 <div class="posts-card__categories">
-                  <?php foreach( $categories as $category ) { ?>
+                  <?php foreach( $postCategories as $category ) { ?>
                   <a
                     href="<?php echo esc_url( get_category_link( $category->term_id ) ) ?>"><?php echo $category->name ?></a>
                   <?php } ?>

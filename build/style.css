@@ -546,7 +546,7 @@ html.transition *::after {
       background-color: var(--color-white);
       border-radius: inherit;
       z-index: -1;
-      -webkit-transform: scale(0);
+      transform: scale(0);
       transform: scale(0);
       transition: all 0.5s ease-in-out; }
     .buttonStyle2 a:link:hover,
@@ -703,7 +703,7 @@ html.transition *::after {
           position: relative;
           width: 6rem;
           height: 3rem;
-          -webkit-appearance: none;
+          appearance: none;
           -moz-appearance: none;
           background-color: var(--color-white);
           border-radius: 2.5rem;
@@ -1153,16 +1153,16 @@ html.transition *::after {
     .blogpage .blogpage__highlights-main {
       flex: 1;
       min-width: 30rem;
-      height: calc(25rem + 25vh);
+      height: calc(40rem + 15vh);
       z-index: 5;
       position: relative;
       color: var(--color-text);
       padding: 2rem;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end; }
+      justify-content: flex-end;
+      cursor: pointer; }
       .blogpage .blogpage__highlights-main-image {
-        background-image: url("../images/test.jpg");
         position: absolute;
         top: 0;
         left: 0;
@@ -1181,6 +1181,8 @@ html.transition *::after {
           background: var(--color-showcase-filter); }
       .blogpage .blogpage__highlights-main:hover .blogpage__highlights-main-image::after {
         background: transparent; }
+      .blogpage .blogpage__highlights-main:hover .blogpage__highlights-main-title {
+        color: var(--color-hover); }
       .blogpage .blogpage__highlights-main-title {
         z-index: 5;
         color: var(--color-active); }
@@ -1192,7 +1194,7 @@ html.transition *::after {
         top: 2rem;
         left: 2rem;
         flex-wrap: wrap; }
-        .blogpage .blogpage__highlights-main-categories p {
+        .blogpage .blogpage__highlights-main-categories a {
           padding: 0.25rem 1rem;
           border-radius: 0.5rem;
           margin-right: 1rem;
@@ -1200,30 +1202,30 @@ html.transition *::after {
           z-index: 5;
           display: none;
           cursor: pointer; }
-        .blogpage .blogpage__highlights-main-categories p:nth-child(3n + 1) {
+        .blogpage .blogpage__highlights-main-categories a:nth-child(3n + 1) {
           background-color: var(--color-categories-1);
           border: 1px solid var(--color-categories-1);
           color: var(--color-text);
           display: block; }
-          .blogpage .blogpage__highlights-main-categories p:nth-child(3n + 1):hover {
+          .blogpage .blogpage__highlights-main-categories a:nth-child(3n + 1):hover {
             background-color: var(--color-categories-hover);
             border: 1px solid var(--color-categories-1);
             color: var(--color-categories-1); }
-        .blogpage .blogpage__highlights-main-categories p:nth-child(3n + 2) {
+        .blogpage .blogpage__highlights-main-categories a:nth-child(3n + 2) {
           background-color: var(--color-categories-2);
           border: 1px solid var(--color-categories-2);
           color: var(--color-text);
           display: block; }
-          .blogpage .blogpage__highlights-main-categories p:nth-child(3n + 2):hover {
+          .blogpage .blogpage__highlights-main-categories a:nth-child(3n + 2):hover {
             background-color: var(--color-categories-hover);
             border: 1px solid var(--color-categories-2);
             color: var(--color-categories-2); }
-        .blogpage .blogpage__highlights-main-categories p:nth-child(3n + 3) {
+        .blogpage .blogpage__highlights-main-categories a:nth-child(3n + 3) {
           background-color: var(--color-categories-3);
           border: 1px solid var(--color-categories-3);
           color: var(--color-text);
           display: block; }
-          .blogpage .blogpage__highlights-main-categories p:nth-child(3n + 3):hover {
+          .blogpage .blogpage__highlights-main-categories a:nth-child(3n + 3):hover {
             background-color: var(--color-categories-hover);
             border: 1px solid var(--color-categories-3);
             color: var(--color-categories-3); }
@@ -1251,7 +1253,10 @@ html.transition *::after {
         background-color: var(--color-card);
         color: var(--color-text);
         display: flex;
-        border: 1px solid var(--color-card-border); }
+        border: 1px solid var(--color-card-border);
+        cursor: pointer; }
+        .blogpage .blogpage__highlights-sub-card:hover .blogpage__highlights-sub-card-details-title {
+          color: var(--color-hover); }
         .blogpage .blogpage__highlights-sub-card-img {
           height: 100%;
           width: 30%;
@@ -1268,7 +1273,7 @@ html.transition *::after {
             display: flex;
             color: var(--color-white);
             flex-wrap: wrap; }
-            .blogpage .blogpage__highlights-sub-card-details-categories p {
+            .blogpage .blogpage__highlights-sub-card-details-categories a {
               padding: 0rem 1rem;
               border-radius: 0.5rem;
               margin-right: 1rem;
@@ -1276,30 +1281,30 @@ html.transition *::after {
               z-index: 5;
               display: none;
               cursor: pointer; }
-            .blogpage .blogpage__highlights-sub-card-details-categories p:nth-child(3n + 1) {
+            .blogpage .blogpage__highlights-sub-card-details-categories a:nth-child(3n + 1) {
               background-color: var(--color-categories-1);
               border: 1px solid var(--color-categories-1);
               color: var(--color-text);
               display: block; }
-              .blogpage .blogpage__highlights-sub-card-details-categories p:nth-child(3n + 1):hover {
+              .blogpage .blogpage__highlights-sub-card-details-categories a:nth-child(3n + 1):hover {
                 background-color: var(--color-categories-hover);
                 border: 1px solid var(--color-categories-1);
                 color: var(--color-categories-1); }
-            .blogpage .blogpage__highlights-sub-card-details-categories p:nth-child(3n + 2) {
+            .blogpage .blogpage__highlights-sub-card-details-categories a:nth-child(3n + 2) {
               background-color: var(--color-categories-2);
               border: 1px solid var(--color-categories-2);
               color: var(--color-text);
               display: block; }
-              .blogpage .blogpage__highlights-sub-card-details-categories p:nth-child(3n + 2):hover {
+              .blogpage .blogpage__highlights-sub-card-details-categories a:nth-child(3n + 2):hover {
                 background-color: var(--color-categories-hover);
                 border: 1px solid var(--color-categories-2);
                 color: var(--color-categories-2); }
-            .blogpage .blogpage__highlights-sub-card-details-categories p:nth-child(3n + 3) {
+            .blogpage .blogpage__highlights-sub-card-details-categories a:nth-child(3n + 3) {
               background-color: var(--color-categories-3);
               border: 1px solid var(--color-categories-3);
               color: var(--color-text);
               display: block; }
-              .blogpage .blogpage__highlights-sub-card-details-categories p:nth-child(3n + 3):hover {
+              .blogpage .blogpage__highlights-sub-card-details-categories a:nth-child(3n + 3):hover {
                 background-color: var(--color-categories-hover);
                 border: 1px solid var(--color-categories-3);
                 color: var(--color-categories-3); }
@@ -1730,7 +1735,7 @@ html.transition *::after {
         border: 0.2rem solid var(--color-active);
         color: var(--color-background);
         font-weight: 400;
-        -webkit-appearance: button;
+        appearance: button;
         text-transform: capitalize; }
         .comment-respond h3 small a:hover {
           background-color: transparent;

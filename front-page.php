@@ -127,11 +127,9 @@
               <div class="posts-card__hover"></div>
               <div class="card posts-card">
 
-                <?php if(has_post_thumbnail()) { ?>
-                <img class="card-img-top" src="<?php echo get_the_post_thumbnail_url(); ?>" /> <?php } else {
-             ?>
-                <img class="card-img-top" src="<?php echo get_theme_file_uri("/images/default.jpg")?>">
-                <?php }; ?>
+                <img class="card-img-top"
+                  src="<?php if(has_post_thumbnail()) { echo get_the_post_thumbnail_url();} else { echo get_theme_file_uri("/images/default.jpg");} ?>" />
+
                 <div class="card-body">
                   <div class="posts-card__title">
                     <a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
@@ -203,13 +201,9 @@
               <div class="posts-card__hover"></div>
               <div class="card posts-card">
 
-                <?php if(has_post_thumbnail()){ ?>
+                <img class="card-img-top"
+                  src="<?php if(has_post_thumbnail()) { echo get_the_post_thumbnail_url();} else { echo get_theme_file_uri("/images/default.jpg");} ?>" />
 
-                <img class="card-img-top" src="<?php echo get_the_post_thumbnail_url(); ?>" />
-                <?php } else {
-            ?>
-                <img class="card-img-top" src="<?php echo get_theme_file_uri("/images/default.jpg")?>">
-                <?php }; ?>
                 <div class="card-body">
                   <div class="posts-card__title">
                     <a href="<?php the_permalink() ?>"><?php the_title(); ?></a>

@@ -3,8 +3,8 @@
   min-height: 100vh;
   padding: 0;
   flex-flow: column wrap;
- 
-  & &__highlights { 
+
+  & &__highlights {
     display: flex;
     width: 100%;
     height: fit-content;
@@ -14,7 +14,7 @@
     &-main {
       flex: 1;
       min-width: 30rem;
-      height: calc(25rem + 25vh);
+      height: calc(40rem + 15vh);
       z-index: 5;
       position: relative;
       color: var(--color-text);
@@ -22,9 +22,9 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
+      cursor: pointer;
 
       &-image {
-        background-image: url("../images/test.jpg");
         position: absolute;
         top: 0;
         left: 0;
@@ -47,7 +47,10 @@
 
       &:hover {
         .blogpage__highlights-main-image::after {
-            background: transparent;
+          background: transparent;
+        }
+        .blogpage__highlights-main-title {
+          color: var(--color-hover);
         }
       }
 
@@ -65,7 +68,7 @@
         left: 2rem;
         flex-wrap: wrap;
 
-        p {
+        a {
           padding: 0.25rem 1rem;
           border-radius: 0.5rem;
           margin-right: 1rem;
@@ -76,7 +79,7 @@
         }
 
         @for $i from 1 through 3 {
-          p:nth-child(3n + #{$i}) {
+          a:nth-child(3n + #{$i}) {
             background-color: var(--color-categories-#{$i});
             border: 1px solid var(--color-categories-#{$i});
             color: var(--color-text);
@@ -124,6 +127,13 @@
         color: var(--color-text);
         display: flex;
         border: 1px solid var(--color-card-border);
+        cursor: pointer;
+
+        &:hover {
+          .blogpage__highlights-sub-card-details-title {
+            color: var(--color-hover);
+          }
+        }
 
         &-img {
           height: 100%;
@@ -149,7 +159,7 @@
             color: var(--color-white);
             flex-wrap: wrap;
 
-            p {
+            a {
               padding: 0rem 1rem;
               border-radius: 0.5rem;
               margin-right: 1rem;
@@ -160,7 +170,7 @@
             }
 
             @for $i from 1 through 3 {
-              p:nth-child(3n + #{$i}) {
+              a:nth-child(3n + #{$i}) {
                 background-color: var(--color-categories-#{$i});
                 border: 1px solid var(--color-categories-#{$i});
                 color: var(--color-text);
@@ -190,7 +200,7 @@
       &-posts {
         min-width: 37rem;
 
-        &>h1 { 
+        & > h1 {
           margin-bottom: 3rem;
           color: var(--color-text);
           font-size: 2.5rem;
@@ -198,8 +208,7 @@
       }
 
       &-categories {
-
-        &>h1 {
+        & > h1 {
           margin-bottom: 3rem;
           color: var(--color-text);
           font-size: 2.5rem;
@@ -226,8 +235,8 @@
             left: 0;
             background: var(--color-showcase-filter);
             z-index: 0;
-          border-radius: 2rem;
-        }
+            border-radius: 2rem;
+          }
 
           &:hover {
             &::after {
@@ -274,7 +283,7 @@
           background-color: var(--color-sidebar-tab);
           border-radius: 2rem;
 
-          &>a {
+          & > a {
             padding: 1.5rem 2rem;
             font-size: 2rem;
             color: var(--color-text);
@@ -293,19 +302,19 @@
         &-content {
           padding-top: 1rem;
 
-          &>div {
+          & > div {
             display: none;
             padding: 1.5rem 0;
             flex-flow: row wrap;
 
-            &>img {
+            & > img {
               width: 6rem;
               height: 6rem;
               border-radius: 1rem;
               object-fit: cover;
             }
 
-            &>div {
+            & > div {
               padding-left: 1rem;
               color: var(--color-text);
 
@@ -324,7 +333,7 @@
           }
 
           &-tags {
-            &>a {
+            & > a {
               font-size: 1.5rem;
               margin-right: 1rem;
               text-transform: capitalize;
@@ -332,7 +341,7 @@
             }
 
             a:hover,
-            a:focus{
+            a:focus {
               color: var(--color-hover);
             }
           }
@@ -455,7 +464,5 @@
         }
       }
     }
-
-
   }
 }

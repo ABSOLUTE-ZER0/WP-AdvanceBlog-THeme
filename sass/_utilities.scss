@@ -571,7 +571,7 @@ html.transition *::after {
       background-color: var(--color-white);
       border-radius: inherit;
       z-index: -1;
-      -webkit-transform: scale(0);
+      transform: scale(0);
       transform: scale(0);
       transition: all 0.5s ease-in-out;
     }
