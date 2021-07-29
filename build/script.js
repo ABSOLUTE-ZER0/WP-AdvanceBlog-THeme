@@ -55,7 +55,7 @@ const scrollUp = () => {
     headerElement.classList.toggle("one-edge-shadow", window.scrollY > 0);
     if (logo)
       logo.src =
-        window.scrollY > 80 ? "images/logo-dark.png" : "images/logo-light.png";
+      window.scrollY > 80 ? "images/logo-dark.png" : "images/logo-light.png";
   });
 
   function scrollToTop() {
@@ -142,3 +142,14 @@ const sidebarPosts = (name) => {
     sidebarContent.classList.add("active");
   }
 };
+
+
+// remove html tags from comments
+
+
+const removeHTML = (content) => {
+  var clean = content.textContent || content.innerText;
+  console.log(clean);
+  return clean;
+};
+

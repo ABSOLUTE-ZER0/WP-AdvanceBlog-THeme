@@ -1,15 +1,15 @@
-.blog {
+.blogpage {
   margin-top: 15rem;
   min-height: 100vh;
   padding: 0;
   flex-flow: column wrap;
  
-  &__highlights { 
+  & &__highlights { 
     display: flex;
     width: 100%;
     height: fit-content;
     flex-flow: row wrap;
-    margin-bottom: 5rem;
+    margin-bottom: 10rem;
 
     &-main {
       flex: 1;
@@ -46,10 +46,8 @@
       }
 
       &:hover {
-        .blog__highlights-main-image {
-          &::after {
+        .blogpage__highlights-main-image::after {
             background: transparent;
-          }
         }
       }
 
@@ -181,10 +179,9 @@
     }
   }
 
-  &__main {
+  & &__main {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 5rem;
 
     &-content {
       flex: 3;
@@ -377,7 +374,7 @@
 
   //*-*-*-*-*-*-*-*-*-*-- The 1200px Mark Break Point*-*-*-*-*-*-*-*-*-*-*
   @include media-desktop {
-    &__highlights {
+    & &__highlights {
       &-sub {
         &-card {
           padding-right: 0;
@@ -390,7 +387,7 @@
   @include media-tablet {
     padding: 0;
 
-    &__highlights {
+    & &__highlights {
       &-main {
         height: 60rem;
         min-width: 20rem;
@@ -411,7 +408,7 @@
   @include media-large {
     margin-top: 10rem;
 
-    &__main {
+    & &__main {
       margin-top: 0;
 
       &-content {
@@ -424,7 +421,7 @@
       }
     }
 
-    &__highlights {
+    & &__highlights {
       &-sub {
         margin: 3rem 0;
 
@@ -439,19 +436,19 @@
     margin-top: 0rem;
     padding: 0rem;
 
-    &__highlights {
+    & &__highlights {
       &-sub {
         padding: 0 1rem;
       }
     }
 
-    &__main {
+    & &__main {
       padding: 1rem;
     }
   }
 
   @include media-small {
-    &__highlights {
+    & &__highlights {
       &-sub {
         &-card {
           width: calc(100vw - 2rem);

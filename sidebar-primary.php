@@ -1,4 +1,4 @@
-<div id="sidebar-primary" class="sidebar box-shadow-1">
+<div id="sidebar-primary" class="sidebar box-shadow-1 blogpage__main-sidebar">
   <?php if ( is_active_sidebar( 'primary' ) ) { 
     dynamic_sidebar( 'primary' ); 
   } else {?>
@@ -83,7 +83,7 @@
           'number'      => 5, // number of comments to retrieve.
           'status'      => 'approve', // we only want approved comments.
           'post_status' => 'publish' // limit to published comments.
-        ) );
+        ) ); 
 
 
         if ( $recent_comments ) {
@@ -93,9 +93,9 @@
           <div>
             <?php echo get_avatar( get_comment_author( $comment ), 32 )?>
             <div>
-              <h1><?php echo get_comment_author( $comment ) ?></h1>
-              <h2><?php echo comment_text($comment) ?></h2>
-              <p> <?php comment_date('M j, Y', $comment); ?></p>
+              <h1><?php echo get_comment_author( $comment );   ?></h1>
+              <h2><?php echo wp_trim_words(strip_tags("$comment->comment_content") , 9); ?></h2>
+              <p><?php comment_date('M j, Y', $comment); ?></p>
             </div>
           </div>
         </a>

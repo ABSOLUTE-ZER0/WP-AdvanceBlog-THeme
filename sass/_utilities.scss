@@ -288,6 +288,8 @@ html.transition *::after {
 
     & > img {
       border-radius: 2rem;
+      object-fit: cover;
+      aspect-ratio: 414/275;
     }
 
     &__title {

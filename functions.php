@@ -15,7 +15,7 @@ function blog_features() {
 
 add_action("wp_enqueue_scripts", "blog_header_files");
 add_action("after_setup_theme", "blog_features");
-
+add_theme_support('title-tag');
 add_theme_support( 'post-thumbnails' );
 
 // creating featured checkbox
@@ -157,3 +157,19 @@ function is_paginate_comments( $post_id = 0 ) {
 
 
 
+# Will return true if there is a next page
+function has_next_page() {
+  global $paged, $max_page;
+  return $paged < $max_page;
+}
+
+# Will return true if there is a previous page
+function has_previous_page() {
+  global $paged;
+  return $paged > 1;
+}
+
+# Will return true if there is more than one page (either before or after).
+function is_paginated() {
+  return has_next_page() or has_previous_page();
+}

@@ -128,10 +128,8 @@
               <div class="card posts-card">
 
                 <?php if(has_post_thumbnail()) { ?>
-                <img class="card-img-top"
-                  src="<?php echo wp_get_attachment_image_src( get_post_thumbnail_id( get_the_id() )); ?>" />
-                <?php } else {
-            ?>
+                <img class="card-img-top" src="<?php echo get_the_post_thumbnail_url(); ?>" /> <?php } else {
+             ?>
                 <img class="card-img-top" src="<?php echo get_theme_file_uri("/images/default.jpg")?>">
                 <?php }; ?>
                 <div class="card-body">
@@ -188,7 +186,8 @@
         </h1>
         <div class="posts">
           <div class="row row-cols-1 row-cols-md-3 g-4">
-          <?php // Define our WP Query Parameters
+
+            <?php // Define our WP Query Parameters
         $popularpost = new WP_Query( array( 
           'posts_per_page' => 3,
           'ignore_sticky_posts' => true,
@@ -205,8 +204,8 @@
               <div class="card posts-card">
 
                 <?php if(has_post_thumbnail()){ ?>
-                <img class="card-img-top"
-                  src="<?php echo wp_get_attachment_image_src( get_post_thumbnail_id( get_the_id() )); ?>" />
+
+                <img class="card-img-top" src="<?php echo get_the_post_thumbnail_url(); ?>" />
                 <?php } else {
             ?>
                 <img class="card-img-top" src="<?php echo get_theme_file_uri("/images/default.jpg")?>">

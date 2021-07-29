@@ -10,7 +10,7 @@
   justify-content: space-around;
 
 
-  &__background {
+  & &__background {
     position: absolute;
     left: calc((100% - 100vw) / 2);
     background: url("../images/contact.jpg");
@@ -32,7 +32,7 @@
     }
   }
 
-  &__details {
+  & &__details {
     width: calc(40rem + 10vw);
     display: flex;
     flex-flow: column wrap;
@@ -59,7 +59,7 @@
     }
   }
 
-  &__touch {
+  & &__touch {
     width: calc(40rem + 5vw);
     display: flex;
     flex-flow: column wrap;
@@ -87,7 +87,7 @@
     }
   }
 
-  &__rights {
+  & &__rights {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -117,18 +117,18 @@
 
 
   @include media-tablet {
-    &__details {
+    & &__details {
       width: 35rem;
     }
 
-    &__touch {
+    & &__touch {
       width: 35rem;
       padding-left: 2rem;
     }
   }
 
   @include media-large {
-    &__touch {
+    & &__touch {
       width: 100%;
     }
   }

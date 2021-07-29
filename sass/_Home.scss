@@ -2,7 +2,7 @@
   position: relative;
   height: 100vh;
 
-  &__carousel {
+  & &__carousel {
     &-data {
       text-align: center;
 
@@ -90,7 +90,7 @@
     }
   }
 
-  &__waves {
+  & &__waves {
     img {
       position: absolute;
       bottom: -0.5rem;
@@ -101,7 +101,7 @@
   }
 
   @include media-tablet {
-    &__carousel {
+    & &__carousel {
       &-data {
         &-captions {
           padding: 0 10rem;
@@ -117,7 +117,7 @@
   }
 
   @include media-medium {
-    &__carousel {
+    & &__carousel {
       &-data {
         &-captions {
           padding: 0 4rem;
