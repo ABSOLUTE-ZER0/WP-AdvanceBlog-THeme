@@ -1,0 +1,501 @@
+.header {
+  grid-column: container-start / container-end;
+  background-color: transparent;
+  position: fixed;
+  width: 100vw;
+  height: 11rem;
+  line-height: 11rem;
+  top: 0;
+  left: 0;
+  transition: all 0.5s ease-in-out;
+  color: var(--color-text);
+  z-index: 100;
+  background-image: linear-gradient(
+    to bottom,
+    var(--color-header-m) 1%,
+    transparent 100%
+  );
+
+  &.active {
+    background-color: var(--color-header);
+    background-image: none;
+    color: var(--color-background);
+    height: 9rem;
+    line-height: 9rem;
+
+    .header__nav {
+      &--links {
+        & .menu-item {
+          a:hover {
+            color: var(--color-background-m);
+
+            &::after {
+              transform: rotateY(0);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Dynamic Class => is toggled using JavaScript
+  // Middle Line
+  &.open .header__menu--line {
+    background-color: transparent !important;
+  }
+
+  &.open .header__menu--line::before {
+    transform: rotate(45deg);
+  }
+
+  &.open .header__menu--line::after {
+    transform: rotate(-45deg);
+  }
+
+  &.open .header__menu--line::before,
+  &.open .header__menu--line::after {
+    top: 0;
+  }
+
+  &__overlay {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--color-hover);
+    position: fixed;
+    opacity: 0;
+    display: none;
+    z-index: 10;
+
+    &-search {
+      width: 100%;
+      height: 100vh;
+      background-color: var(--color-background);
+      position: fixed;
+      opacity: 0;
+      display: none;
+      z-index: 1000;
+
+      &.open {
+        display: block;
+        opacity: 0.9;
+      }
+
+      &--line {
+        padding: 3rem;
+      }
+
+      &--line,
+      &--line::before,
+      &--line::after {
+        content: " ";
+        position: absolute;
+        width: 3.5rem;
+        height: 0.3rem;
+        background-color: transparent;
+        right: 5rem;
+        top: 5rem;
+        cursor: pointer;
+      }
+
+      &--line::before {
+        transform: rotate(45deg);
+        background-color: var(--color-text);
+        top: 3rem;
+        right: 1.25rem;
+      }
+
+      &--line::after {
+        transform: rotate(-45deg);
+        background-color: var(--color-text);
+        top: 3rem;
+        right: 1.25rem;
+      }
+
+      & > input {
+        background: none;
+        border: none;
+        margin-left: 50vw;
+        margin-top: 50vh;
+        transform: translateX(-50%) translateY(-50%);
+        width: 100vw;
+        text-align: center;
+        font-size: font-size(font-size-regular);
+        height: 100vh;
+        color: var(--color-text);
+        font-weight: 300;
+      }
+    }
+  }
+
+  &__nav {
+    width: 100%;
+    height: 100%;
+    line-height: inherit;
+    color: inherit;
+    display: flex;
+    justify-content: space-evenly;
+    text-transform: uppercase;
+    overflow: hidden;
+
+    &--logo {
+      font-weight: 500 !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Allura", cursive;
+      text-transform: capitalize;
+      font-size: font-size(font-size-regular) !important;
+      color: inherit !important;
+
+      img {
+        height: 6rem;
+        width: 6rem;
+        margin-right: 1rem;
+      }
+    }
+
+    &--links {
+      display: flex;
+
+      & .menu {
+        display: flex;
+      }
+
+      & .menu-item {
+        a:link,
+        a:visited {
+          margin: 0 1rem;
+          padding: 0 1.5rem;
+          position: relative;
+          color: inherit;
+          font-size: font-size(font-size-small);
+          font-weight: font-weight(font-weight-light);
+          letter-spacing: 0.1rem;
+        }
+
+        a:link::after,
+        a:visited::after {
+          content: " ";
+          border-bottom: 1px solid var(--color-hover);
+          height: 1px;
+          width: 100%;
+          position: absolute;
+          bottom: -1rem;
+          left: 0;
+          transform: rotateY(90deg);
+          transition: transform 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        }
+
+        a:hover {
+          color: var(--color-text-m);
+
+          &::after {
+            transform: rotateY(0);
+          }
+        }
+      }
+
+      // direction => downwards
+      &__item:nth-child(odd) {
+        animation: downwards 1s forwards;
+      }
+
+      // direction => upwards
+      &__item:nth-child(even) {
+        animation: upwards 1s forwards;
+      }
+
+      // Dark Mode Toggle Button
+      &__toggle-container {
+        display: flex;
+        align-items: center;
+        margin: 0 1rem;
+
+        input[type="checkbox"] {
+          cursor: pointer;
+          position: relative;
+          width: 6rem;
+          height: 3rem;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          background-color: var(--color-white);
+          border-radius: 2.5rem;
+          box-shadow: inset 0 0 0.6rem 0.1rem rgb(190, 190, 190);
+          transition: all 0.5s ease-in-out;
+          background-color: var(--color-hover);
+        }
+
+        input[type="checkbox"]::before,
+        input[type="checkbox"]::after {
+          content: "";
+          position: absolute;
+          top: 0.8rem;
+          width: 1.5rem;
+          height: 1.5rem;
+          border-radius: 50%;
+          background-color: var(--color-white);
+          box-shadow: 0 0.1rem 0.3rem 0.1rem hsla(0, 0%, 75%, 0.35);
+          transition: all 0.5s ease-in-out;
+        }
+
+        input[type="checkbox"]::before {
+          left: 0.5rem;
+        }
+
+        input[type="checkbox"]::after {
+          right: 0.5rem;
+        }
+
+        input:checked[type="checkbox"]::before {
+          left: 37%;
+          box-shadow: none;
+        }
+
+        input:checked[type="checkbox"]::after {
+          right: 38%;
+          box-shadow: none;
+        }
+      }
+
+      &__search-container {
+        font-size: 2rem;
+        color: inherit;
+        margin: 0 1rem;
+        cursor: pointer;
+      }
+
+      li.current-menu-item > a:link {
+        color: inherit;
+        font-weight: 500;
+
+        &::after {
+          transform: rotateY(0);
+          border-bottom: 1px solid var(--color-hover-m);
+        }
+      }
+
+      li.current-menu-item > a:hover {
+        color: var(--color-text-m);
+
+        &::after {
+          transform: rotateY(0);
+          border-bottom: 1px solid var(--color-hover);
+        }
+      }
+    }
+  }
+
+  //*-*-*-*-*-*-*-*-*-*-- The 1000px Mark Break Point*-*-*-*-*-*-*-*-*-*-*
+  @include media-tablet {
+    &__nav {
+      &--links {
+        & .menu-item {
+          a:link,
+          a:visited {
+            font-size: 1.7rem;
+          }
+        }
+      }
+    }
+  }
+
+  //*-*-*-*-*-*-*-*-*-*-- The 800px Mark Break Point*-*-*-*-*-*-*-*-*-*-*
+
+  @include media-large {
+    &__nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 25rem;
+      height: 100vh;
+      line-height: initial;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      z-index: 20;
+      background-color: var(--color-background);
+      color: var(--color-text) !important;
+      transform: perspective(70rem) rotateY(180deg);
+      transform-origin: top left;
+      transition: transform 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+
+      &--links {
+        height: 80%;
+        padding: 0;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding-top: 5rem;
+
+        & .menu {
+          flex-flow: column wrap;
+        }
+
+        & .menu-item {
+          a:link,
+          a:visited {
+            transform-origin: left;
+            margin-right: initial;
+            padding: 2rem;
+            margin: 1rem 0;
+            font-size: 1.2rem;
+            display: block;
+            transform-style: preserve-3d;
+            transition: transform 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+          }
+
+          a:hover {
+            transform: rotateY(90deg);
+          }
+
+          a:link::after,
+          a:visited::after {
+            border-bottom: none;
+            transition: none;
+            content: attr(data-text);
+            position: absolute;
+            background-color: var(--color-hover);
+            color: var(--color-text) !important;
+            top: 0;
+            bottom: 100%;
+            left: 100%;
+            width: 100%;
+            height: 100%;
+            transform-origin: left;
+            transform: rotateY(-90deg);
+            padding: inherit;
+          }
+        }
+
+        &__item:nth-child(odd) {
+          animation: downwards 1s right;
+        }
+
+        &__item:nth-child(even) {
+          animation: upwards 1s left;
+        }
+
+        &__toggle-container {
+          justify-content: center;
+        }
+
+        li.current-menu-item > a {
+          transform: rotateY(90deg);
+        }
+      }
+    }
+
+    &.open nav {
+      transform: rotateY(0);
+    }
+
+    &.active {
+      .header__menu {
+        &--line,
+        &--line::before,
+        &--line::after {
+          background-color: var(--color-background);
+        }
+      }
+    }
+
+    &__menu {
+      position: fixed;
+      height: 4rem;
+      width: 4rem;
+      top: 2rem;
+      right: 2rem;
+      padding: 2.5rem;
+      z-index: 20;
+      cursor: pointer;
+
+      &--line,
+      &--line::before,
+      &--line::after {
+        content: "";
+        position: absolute;
+        width: 3.5rem;
+        height: 0.2rem;
+        background-color: var(--color-text);
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        transition: all 0.5s ease-in-out;
+      }
+
+      &--line::before {
+        top: -2rem;
+      }
+
+      &--line::after {
+        top: 2rem;
+      }
+    }
+
+    &__overlay.open {
+      display: block;
+      opacity: 0.8;
+    }
+  }
+}
+
+// Upwards
+@keyframes upwards {
+  // Starting point
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  // Ending Point
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// Downwards
+@keyframes downwards {
+  // Starting point
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  // Ending Point
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// TO LEFT
+@keyframes left {
+  // Starting point
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  // Ending Point
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+// TO RIGHT
+@keyframes right {
+  // Starting point
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  // Ending Point
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

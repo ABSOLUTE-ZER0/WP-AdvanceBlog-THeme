@@ -1,0 +1,135 @@
+.footer {
+  position: relative;
+  width: 100%;
+  margin-top: 10rem;
+  z-index: 5;
+  color: rgb(255, 255, 255);
+  display: flex;
+  flex-flow: row wrap;
+  min-height: 50rem;
+  justify-content: space-around;
+
+
+  &__background {
+    position: absolute;
+    left: calc((100% - 100vw) / 2);
+    background: url("../images/contact.jpg");
+    width: 100vw;
+    height: 50rem;
+    background-attachment: fixed;
+    background-size: cover;
+    z-index: -1;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.6);
+      transition: all 1s;
+    }
+  }
+
+  &__details {
+    width: calc(40rem + 10vw);
+    display: flex;
+    flex-flow: column wrap;
+    min-height: 50rem;
+    padding: 5rem 0;
+    align-items: flex-start;
+
+    &>h1 {
+      font-size: 5rem;
+      padding-top: 5rem;
+      font-weight: 600;
+      height: fit-content;
+      text-transform: capitalize;
+    }
+
+    &>p {
+      font-size: 1.7rem;
+      margin-top: 2rem;
+      padding-right: 0%;
+    }
+
+    &-button {
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__touch {
+    width: calc(40rem + 5vw);
+    display: flex;
+    flex-flow: column wrap;
+    min-height: 50rem;
+    padding: 5rem 0;
+    padding-left: 10rem;
+    justify-content: center;
+
+    &>h1 {
+      font-size: 5rem;
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+
+    &>div {
+      &>p {
+        font-size: 1.7rem;
+        margin-top: 1rem;
+      }
+
+      &>h2 {
+        margin-top: 2rem;
+        color: var(--color-active);
+      }
+    }
+  }
+
+  &__rights {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.603);
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+    flex-flow: row wrap;
+ 
+    p {
+      margin-bottom: 0;
+      padding-left: 5rem;
+    }
+
+    a {
+      color: var(--color-white);
+      font-size: 1.5rem;
+
+      &:hover {
+        color: var(--color-hover);
+        font-weight: 700;
+
+      }
+    }
+  }
+
+
+  @include media-tablet {
+    &__details {
+      width: 35rem;
+    }
+
+    &__touch {
+      width: 35rem;
+      padding-left: 2rem;
+    }
+  }
+
+  @include media-large {
+    &__touch {
+      width: 100%;
+    }
+  }
+}
