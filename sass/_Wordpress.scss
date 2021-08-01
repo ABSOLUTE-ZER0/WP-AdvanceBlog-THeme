@@ -203,7 +203,7 @@
     font-weight: 500;
     border-bottom: 2px solid var(--color-hover);
     color: var(--color-text);
-    width: fit-content; 
+    width: fit-content;
     padding-right: 5rem;
     margin-top: 5rem;
     display: flex;
@@ -420,7 +420,6 @@
     color: var(--color-background);
     font-weight: 400;
     cursor: pointer;
-
     &.current {
       font-weight: 500;
       background-color: var(--color-hover);
@@ -430,6 +429,14 @@
     &:hover {
       color: var(--color-hover);
       font-weight: 500;
+    }
+  }
+
+  @include media-medium {
+    .page-numbers {
+      font-size: 1rem;
+      margin-right: 0rem;
+      padding: 1rem 1rem;
     }
   }
 }
@@ -618,5 +625,19 @@
         filter: opacity(0.7);
       }
     }
+  }
+}
+
+
+// missi
+
+.post-password-form{
+  p > input{
+    padding: 0.25rem 1rem;
+    background-color: var(--color-hover);
+    color: var(--color-text);
+    border: 0;
+    border-radius: 0.25rem;
+    margin-left: 1rem;
   }
 }

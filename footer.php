@@ -44,36 +44,41 @@
 <div class="scroll"></div>
 
 <script>
-  //toggle dark andlight mode
+  //set dark and light mode
+
+  let smoothTrans = () => {
+    htmlElement.classList.add("transition");
+
+    window.setTimeout(() => {
+      htmlElement.classList.remove("transition");
+    }, 500);
+  };
 
   const switchDarkMode = () => {
-    checkbox.addEventListener("change", () => {
-      if (checkbox.checked) {
-        smoothTrans();
-        if (logo) {
-          logo.src = "images/logo-dark.png";
-        }
-        if (slideshowFilter)
-          slideshowFilter.src = "<?php echo get_theme_file_uri("images/slideshow-waves-dark.png") ?>";
-        htmlElement.setAttribute("data-theme", "dark");
-      } else {
-        smoothTrans();
-        if (logo) {
-          logo.src = "images/logo-light.png";
-        }
-        if (slideshowFilter)
-          slideshowFilter.src = "<?php echo get_theme_file_uri("images/slideshow-waves-light.png") ?>";
-        htmlElement.setAttribute("data-theme", "light");
-      }
-    });
+    checkbox.checked = true;
+    localStorage.setItem("darkMode", "true")
+    smoothTrans();
+    if (logo) {
+      logo.src = "images/logo-dark.png";
+    }
+    if (slideshowFilter){
+      slideshowFilter.src = "<?php echo get_theme_file_uri("images/slideshow-waves-dark.png"); ?>";
+    }
+    htmlElement.setAttribute("data-theme", "dark");
+  };
 
-    let smoothTrans = () => {
-      htmlElement.classList.add("transition");
 
-      window.setTimeout(() => {
-        htmlElement.classList.remove("transition");
-      }, 500);
-    };
+  const switchLightMode = () => {
+    checkbox.checked = false;
+    localStorage.setItem("darkMode", "false")
+    smoothTrans();
+    if (logo) {
+      logo.src = "images/logo-light.png";
+    }
+    if (slideshowFilter){
+      slideshowFilter.src = "<?php echo get_theme_file_uri("images/slideshow-waves-light.png"); ?>";
+    }
+    htmlElement.setAttribute("data-theme", "light");
   };
 </script>
 

@@ -118,62 +118,9 @@
           'ignore_sticky_posts' => true
         )); 
 
-        while ($recentPosts -> have_posts()) {
-          $recentPosts -> the_post(); 
-          $categories = get_the_category();?>
-
-
-            <div class="col">
-              <div class="posts-card__hover"></div>
-              <div class="card posts-card">
-
-                <img class="card-img-top"
-                  src="<?php if(has_post_thumbnail()) { echo get_the_post_thumbnail_url();} else { echo get_theme_file_uri("/images/default.jpg");} ?>" />
-
-                <div class="card-body">
-                  <div class="posts-card__title">
-                    <a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
-                    <p><i
-                        class="fas fa-comment"><span><?php echo wp_count_comments(get_the_id())->total_comments ?></span></i>
-                    </p>
-                  </div>
-
-                  <div class="posts-card__metadata">
-                    <p>
-                      By <?php the_author_posts_link(); ?>
-                      <span>
-                        <i class="far fa-calendar-alt"></i> <?php the_time('M j, Y'); ?></span>
-                    </p>
-                  </div>
-
-                  <div class="posts-card__categories">
-                    <?php foreach( $categories as $category ) { ?>
-                    <a
-                      href="<?php echo esc_url( get_category_link( $category->term_id ) ) ?>"><?php echo $category->name ?></a>
-                    <?php } ?>
-                  </div>
-
-                  <p class="card-text posts-card__desc">
-                    <?php if(has_excerpt()){
-            echo get_the_excerpt();
-          } else{
-            echo wp_trim_words(get_the_content() , 18); }?>
-                  </p>
-
-                  <a href="<?php the_permalink() ?>" class="posts-card__readmore buttonStyle1">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <p>
-                      Continue <i class="fas fa-angle-double-right"></i>
-                    </p>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <?php }; wp_reset_postdata();?>
+          postCard($recentPosts);
+          wp_reset_postdata();
+          ?>
           </div>
         </div>
       </div>
@@ -185,69 +132,18 @@
         <div class="posts">
           <div class="row row-cols-1 row-cols-md-3 g-4">
 
-            <?php // Define our WP Query Parameters
-        $popularpost = new WP_Query( array( 
-          'posts_per_page' => 3,
-          'ignore_sticky_posts' => true,
-          'meta_key' => 'wpb_post_views_count', 
-          'orderby' => 'meta_value_num', 
-          'order' => 'DESC'  ) );
+            <?php
+              $popularpost = new WP_Query(
+                array( 
+                  'posts_per_page' => 3,
+                  'ignore_sticky_posts' => true,
+                  'meta_key' => 'wpb_post_views_count', 
+                  'orderby' => 'meta_value_num', 
+                  'order' => 'DESC',  
+                ));
 
-        while ($popularpost -> have_posts()) {
-          $popularpost -> the_post(); ?>
-
-
-            <div class="col">
-              <div class="posts-card__hover"></div>
-              <div class="card posts-card">
-
-                <img class="card-img-top"
-                  src="<?php if(has_post_thumbnail()) { echo get_the_post_thumbnail_url();} else { echo get_theme_file_uri("/images/default.jpg");} ?>" />
-
-                <div class="card-body">
-                  <div class="posts-card__title">
-                    <a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
-                    <p><i
-                        class="fas fa-comment"><span><?php echo wp_count_comments(get_the_id())->total_comments ?></span></i>
-                    </p>
-                  </div>
-
-                  <div class="posts-card__metadata">
-                    <p>
-                      By <?php the_author_posts_link(); ?>
-                      <span>
-                        <i class="far fa-calendar-alt"></i> <?php the_time('M j, Y'); ?></span>
-                    </p>
-                  </div>
-
-                  <div class="posts-card__categories">
-                    <?php foreach( $categories as $category ) { ?>
-                    <a
-                      href="<?php echo esc_url( get_category_link( $category->term_id ) ) ?>"><?php echo $category->name ?></a>
-                    <?php } ?>
-                  </div>
-
-                  <p class="card-text posts-card__desc">
-                    <?php if(has_excerpt()){
-            echo get_the_excerpt();
-          } else{
-            echo wp_trim_words(get_the_content() , 18); }?>
-                  </p>
-
-                  <a href="<?php the_permalink() ?>" class="posts-card__readmore buttonStyle1">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <p>
-                      Continue <i class="fas fa-angle-double-right"></i>
-                    </p>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <?php }; wp_reset_postdata();?>
+              postCard($popularpost);
+              wp_reset_postdata();?>
           </div>
         </div>
       </div>

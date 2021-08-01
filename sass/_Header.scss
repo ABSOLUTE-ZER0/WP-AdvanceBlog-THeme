@@ -302,6 +302,10 @@
   //*-*-*-*-*-*-*-*-*-*-- The 800px Mark Break Point*-*-*-*-*-*-*-*-*-*-*
 
   @include media-large {
+    &.active {
+      height: 7rem;
+    }
+
     &__nav {
       position: fixed;
       top: 0;
@@ -328,6 +332,7 @@
 
         & .menu {
           flex-flow: column wrap;
+          padding-left: 0;
         }
 
         & .menu-item {
@@ -342,28 +347,6 @@
             transform-style: preserve-3d;
             transition: transform 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
           }
-
-          a:hover {
-            transform: rotateY(90deg);
-          }
-
-          a:link::after,
-          a:visited::after {
-            border-bottom: none;
-            transition: none;
-            content: attr(data-text);
-            position: absolute;
-            background-color: var(--color-hover);
-            color: var(--color-text) !important;
-            top: 0;
-            bottom: 100%;
-            left: 100%;
-            width: 100%;
-            height: 100%;
-            transform-origin: left;
-            transform: rotateY(-90deg);
-            padding: inherit;
-          }
         }
 
         &__item:nth-child(odd) {
@@ -376,10 +359,6 @@
 
         &__toggle-container {
           justify-content: center;
-        }
-
-        li.current-menu-item > a {
-          transform: rotateY(90deg);
         }
       }
     }
@@ -402,7 +381,7 @@
       position: fixed;
       height: 4rem;
       width: 4rem;
-      top: 2rem;
+      top: 1rem;
       right: 2rem;
       padding: 2.5rem;
       z-index: 20;

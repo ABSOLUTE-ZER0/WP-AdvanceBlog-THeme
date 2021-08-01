@@ -49,6 +49,7 @@
         .blogpage__highlights-main-image::after {
           background: transparent;
         }
+
         .blogpage__highlights-main-title {
           color: var(--color-hover);
         }
@@ -79,7 +80,7 @@
         }
 
         @for $i from 1 through 3 {
-          a:nth-child(3n + #{$i}) {
+          a:nth-child(#{$i}) {
             background-color: var(--color-categories-#{$i});
             border: 1px solid var(--color-categories-#{$i});
             color: var(--color-text);
@@ -136,13 +137,16 @@
         }
 
         &-img {
-          height: 100%;
-          width: 30%;
+          aspect-ratio: 200/150;
+          width: 20rem;
           object-fit: cover;
         }
 
         &-details {
           padding: 1rem 2rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
 
           &-title {
             font-size: 2rem;
@@ -170,7 +174,7 @@
             }
 
             @for $i from 1 through 3 {
-              a:nth-child(3n + #{$i}) {
+              a:nth-child(#{$i}) {
                 background-color: var(--color-categories-#{$i});
                 border: 1px solid var(--color-categories-#{$i});
                 color: var(--color-text);

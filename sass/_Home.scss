@@ -62,7 +62,7 @@
         color: var(--color-text);
         text-align: center;
 
-        &::after {
+        &::after { 
           content: "";
           position: absolute;
           background-color: var(--color-background);
@@ -86,6 +86,10 @@
             left: -0.6rem;
           }
         }
+      }
+
+      &:hover{
+        opacity: 0.9;
       }
     }
   }

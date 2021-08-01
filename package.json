@@ -4,11 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "sass": "node-sass sass/style.scss build/style.css -w"
+    "sass": "node-sass sass/style.scss build/style.css -w",
+    "build": "wp-scripts build",
+    "start": "wp-scripts start",
+    "dev": "wp-scripts start"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@wordpress/scripts": "^17.1.0",
+    "axios": "^0.21.1",
     "node-sass": "^6.0.1"
   }
 }

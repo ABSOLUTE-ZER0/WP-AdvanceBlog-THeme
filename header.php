@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
@@ -47,7 +47,7 @@
           <i class="fas fa-search"></i>
         </div>
         <div class="header__nav--links__toggle-container">
-          <input onclick="switchDarkMode()" type="checkbox" id="toggle" name="theme" />
+          <input onclick="toggleTheme()" type="checkbox" id="toggle" name="theme" />
         </div>
       </ul>
     </nav>

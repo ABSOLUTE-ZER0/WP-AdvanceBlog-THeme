@@ -1,4 +1,4 @@
-<div id="sidebar-primary" class="sidebar box-shadow-1 blogpage__main-sidebar">
+<div id="sidebar-primary" class="sidebar box-shadow-1 blogpage__main-sidebar archivepage__main-sidebar">
   <?php if ( is_active_sidebar( 'primary' ) ) { 
     dynamic_sidebar( 'primary' ); 
   } else {?>

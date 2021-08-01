@@ -9,7 +9,7 @@
 
     & > img {
       width: 100%;
-      height: calc(60vh);
+      height: 60vh;
       object-fit: cover;
       object-position: center;
     }
@@ -28,7 +28,8 @@
 
   &__details {
     position: absolute;
-    top: calc(20vh + 5rem);
+    top: 0;
+    height: 60vh;
     text-align: center;
     color: var(--color-text);
     display: flex;
@@ -36,9 +37,11 @@
     transform: translateX(-50%);
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 
     h1 {
       font-size: 5rem;
+      white-space: normal;
     }
 
     p {
@@ -49,13 +52,14 @@
 
   &__content {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column;
+    // overflow: hidden;
 
     &-main {
       display: flex;
-      flex-wrap: wrap;
       margin-top: 2rem;
       margin-bottom: 10rem;
+      flex: 3;
 
       &-content {
         flex: 3;
@@ -67,6 +71,7 @@
         * {
           color: var(--color-text);
           font-size: 1.2rem;
+          max-width: 100% !important;
         }
       }
 
@@ -145,7 +150,8 @@
     }
 
     &__content {
-      &-main {
+    flex-flow: column wrap;
+    &-main {
         padding: 0;
 
         &-sidebar {

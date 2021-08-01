@@ -290,6 +290,7 @@ html.transition *::after {
       border-radius: 2rem;
       object-fit: cover;
       aspect-ratio: 414/275;
+      cursor: pointer;
     }
 
     &__title {
@@ -303,6 +304,7 @@ html.transition *::after {
         margin: 0;
         font-weight: normal;
         letter-spacing: normal;
+        word-break: break-all;
 
         &:hover {
           color: var(--color-hover);
@@ -357,7 +359,7 @@ html.transition *::after {
       }
 
       @for $i from 1 through 3 {
-        a:nth-child(3n + #{$i}) {
+        a:nth-child(#{$i}) {
           background-color: var(--color-categories-#{$i});
           border: 1px solid var(--color-categories-#{$i});
           color: var(--color-text);

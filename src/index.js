@@ -23,6 +23,33 @@ const sidebarContentAll = document.querySelectorAll(
 const slideshow__carousel = document.querySelector(".slideshow__carousel-data");
 if (slideshow__carousel) slideshow__carousel.classList.add("active");
 
+// set theme initially
+
+var count = 0;
+
+if (!localStorage.getItem("darkMode")) {
+  console.log("set");
+  localStorage.setItem("darkMode", "false");
+} else if(count == 0) {
+  if (localStorage.getItem("darkMode") == "true") {
+    switchDarkMode();
+  } else {
+    switchLightMode();
+  }
+  count = 1
+}
+
+// toggle theme
+
+const toggleTheme = () => {
+
+  if(localStorage.getItem("darkMode") == "true"){
+    switchLightMode();
+  } else {
+    switchDarkMode();
+  }
+};
+
 // menu toggle
 
 const menuToggle = (type = "none") => {
