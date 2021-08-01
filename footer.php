@@ -46,6 +46,21 @@
 <script>
   //set dark and light mode
 
+  let checkbox = document.querySelector('input[name="theme"]');
+  let htmlElement = document.documentElement;
+  const logo = document.getElementById("header__logo");
+  let slideshowFilter = document.querySelector(".slideshow__waves-img");
+
+  checkbox.addEventListener("click", () => {
+      {
+        if (localStorage.getItem("darkMode") == "true") {
+          switchLightMode();
+        } else {
+          switchDarkMode();
+        }
+      };
+    });
+
   let smoothTrans = () => {
     htmlElement.classList.add("transition");
 

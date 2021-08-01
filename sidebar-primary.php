@@ -4,14 +4,14 @@
   } else {?>
   <div class="sidebar__posts">
     <div class="sidebar__posts-tabs">
-      <a class="sidebar__posts-tabs-recents active" onclick="sidebarPosts('recents')" class="active"
-        data-toggle="tooltip" data-placement="bottom" title="Recents"><i class="fas fa-clock"></i></a>
-      <a data-toggle="tooltip" data-placement="bottom" title="Popular" class="sidebar__posts-tabs-popular"
-        onclick="sidebarPosts('popular')"><i class="fas fa-star"></i></a>
-      <a class="sidebar__posts-tabs-comments" onclick="sidebarPosts('comments')" data-toggle="tooltip"
-        data-placement="bottom" title="Comments"><i class="fas fa-comments"></i></a>
-      <a class="sidebar__posts-tabs-tags" onclick="sidebarPosts('tags')" data-toggle="tooltip" data-placement="bottom"
-        title="Tags"><i class="fas fa-tags"></i></a>
+      <a class="sidebar__posts-tabs-recents active" class="active" data-toggle="tooltip" data-placement="bottom"
+        title="Recents"><i class="fas fa-clock"></i></a>
+      <a data-toggle="tooltip" data-placement="bottom" title="Popular" class="sidebar__posts-tabs-popular"><i
+          class="fas fa-star"></i></a>
+      <a class="sidebar__posts-tabs-comments" data-toggle="tooltip" data-placement="bottom" title="Comments"><i
+          class="fas fa-comments"></i></a>
+      <a class="sidebar__posts-tabs-tags" data-toggle="tooltip" data-placement="bottom" title="Tags"><i
+          class="fas fa-tags"></i></a>
     </div>
 
     <div class="sidebar__posts-content">

@@ -19,7 +19,7 @@
 
 <body <?php body_class() ?>>
   <header class="header">
-    <div onclick="menuToggle()" class="header__menu">
+    <div  class="header__menu">
       <div class="header__menu--line"></div>
     </div>
 
@@ -27,7 +27,7 @@
 
     <div class="header__overlay-search">
       <input id="header__search" autofocus type="text" placeholder="Type your keyoword and press enter" />
-      <div onclick="removeSearch()" class="header__overlay-search--line"></div>
+      <div class="header__overlay-search--line"></div>
     </div>
 
     <nav class="header__nav">
@@ -43,11 +43,11 @@
               ))
             ?>
 
-        <div onclick="addSearch()" class="header__nav--links__search-container">
+        <div class="header__nav--links__search-container">
           <i class="fas fa-search"></i>
         </div>
         <div class="header__nav--links__toggle-container">
-          <input onclick="toggleTheme()" type="checkbox" id="toggle" name="theme" />
+          <input type="checkbox" id="toggle" name="theme" />
         </div>
       </ul>
     </nav>

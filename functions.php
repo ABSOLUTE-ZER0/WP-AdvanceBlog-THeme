@@ -1,12 +1,12 @@
 <?php
 
 function blog_header_files() {
-  wp_enqueue_script("blog_main_script", get_theme_file_uri("/build/script.js"), array('jquery'),1.0, true);
-  wp_enqueue_style("blog_main_styles", get_theme_file_uri("/build/style.css"));
+  wp_enqueue_script("blog_main_script", get_theme_file_uri("/build/index.js"), array('jquery'),1.0, true);
+  wp_enqueue_style("blog_main_styles", get_theme_file_uri("/build/style-index.css"));
   if (is_singular() && comments_open() && (get_option('thread_comments') == 1)) {
     wp_enqueue_script('comment-reply', 'wp-includes/js/comment-reply', array(), false, true);
 }
-}
+} 
  
 function blog_features() {
   register_nav_menu('mainTopHeader', "Main Top Header");

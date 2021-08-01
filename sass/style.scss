@@ -28,7 +28,7 @@
 }
 
 //*-*-*-*-*-*-*-*-*-*- The 400px Mark Break Point*-*-*-*-*-*-*-*-*-*-*
-@mixin media-small {
+@mixin media-small { 
   @media screen and (max-width: break-point(break-point-small)) {
     @content;
   }
@@ -52,10 +52,10 @@
     &:hover {
       border: 6px solid transparent;
     }
-  }
-}
+  } 
+} 
 
-@import "reset";
+@import "reset";  
 @import "variables";
 @import "utilities";
 
