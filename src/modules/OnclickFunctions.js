@@ -3,6 +3,9 @@ class OnclickFunctions {
     this.searchIcon = document.querySelector(
       ".header__nav--links__search-container"
     );
+
+    this.checkboxSearch = document.querySelector(".header__overlay-search");
+
     this.searchCloseIcon = document.querySelector(
       ".header__overlay-search--line"
     );
@@ -17,10 +20,31 @@ class OnclickFunctions {
     );
     this.sidebarTags = document.querySelector(".sidebar__posts-tabs-tags");
 
+    this.searchBar = document.querySelector("#header__search");
+    this.searchResultsDiv = document.querySelector(
+      ".header__overlay-search-results"
+    );
+
+    this.searchOverlayOpen = false;
+
+    this.spinnerActive = false;
+
+    this.prevSearchValue = "";
+
+    this.typingTimer;
+
     this.events();
   }
 
   events() {
+    document.addEventListener("keydown", (e) => {
+      if (e.key == "Escape" && this.searchOverlayOpen) this.removeSearch();
+    });
+
+    this.searchBar.addEventListener("keyup", (e) => {
+      this.typingLogic();
+    });
+
     this.searchIcon.addEventListener("click", () => {
       this.addSearch();
     });
@@ -48,6 +72,85 @@ class OnclickFunctions {
     this.sidebarTags.addEventListener("click", () => {
       this.sidebarPosts("tags");
     });
+  }
+
+  typingLogic() {
+    if (this.prevSearchValue != this.searchBar.value) {
+      clearTimeout(this.typingTimer);
+
+      if (this.searchBar.value == "") {
+        this.searchBar.classList.remove("typed");
+        this.checkboxSearch.classList.remove("allowScroll");
+        this.searchResultsDiv.innerHTML = "";
+        this.spinnerActive = false;
+      } else {
+        this.searchBar.classList.add("typed");
+        this.checkboxSearch.classList.add("allowScroll");
+        if (!this.spinnerActive) {
+          this.searchResultsDiv.innerHTML =
+            "<div class='spinner-loader'></div>";
+          this.spinnerActive = true;
+        }
+        this.typingTimer = setTimeout(this.getResults.bind(this), 500);
+      }
+    }
+
+    this.prevSearchValue = this.searchBar.value;
+  }
+
+  async getResults() {
+    const axios = require("axios");
+
+    try {
+      const response = await axios.get(
+        `${blogData.root_url}/wp-json/blog/v1/search?search=${this.searchBar.value}`
+      );
+
+      let postResult = "";
+      let pageResult = "";
+
+      response.data["post"].forEach((post) => {
+        postResult =
+          postResult +
+          `
+          <a href="${post.link}" class="header__overlay-search-results-post">
+            <h2>${post.title}<p> By ${post.authorName}</p></h2>
+          </a>`;
+      });
+
+      response.data["page"].forEach((page) => {
+        pageResult =
+          pageResult +
+          `
+          <a href="${page.link}" class="header__overlay-search-results-post">
+            <h2>${page.title}</h2>
+          </a>`;
+      });
+
+      if (postResult == "") {
+        postResult = "<h2>No Posts found!</h2>";
+      }
+      if (pageResult == "") {
+        pageResult = "<h2>No Pages found!</h2>";
+      }
+
+      let finalResult = `
+        <div>
+          <h1 class="titleStyle5">Posts</h1>
+          ${postResult}
+        </div>
+
+        <div>
+          <h1 class="titleStyle5">Pages</h1>
+          ${pageResult}
+        </div>
+    `;
+
+      this.searchResultsDiv.innerHTML = finalResult;
+      this.spinnerActive = false;
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   // menu toggle
@@ -80,23 +183,25 @@ class OnclickFunctions {
 
   addSearch() {
     const search = document.querySelector("#header__search");
-    let checkboxSearch = document.querySelector(".header__overlay-search");
     let htmlElement = document.documentElement;
-
     this.menuToggle("remove");
-    checkboxSearch.classList.add("open");
+    this.checkboxSearch.classList.add("open");
     htmlElement.classList.add("noscroll");
     search.focus();
+    this.searchOverlayOpen = true;
   }
 
   //remove search overlay
 
   removeSearch() {
-    let checkboxSearch = document.querySelector(".header__overlay-search");
     let htmlElement = document.documentElement;
-
-    checkboxSearch.classList.remove("open");
+    this.checkboxSearch.classList.remove("open");
     htmlElement.classList.remove("noscroll");
+    this.checkboxSearch.classList.remove("allowScroll");
+    this.searchBar.classList.remove("typed");
+    this.searchBar.value = "";
+    this.searchOverlayOpen = false;
+    this.searchResultsDiv.innerHTML = "";
   }
 
   //set sidebas posts

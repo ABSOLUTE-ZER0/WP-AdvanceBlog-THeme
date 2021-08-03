@@ -78,6 +78,27 @@ html.transition *::after {
   transition-delay: 0 !important;
 }
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+.spinner-loader {
+  margin-top: 45px;
+  margin-left: 50%;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  border: 0.25rem solid var(--color-text-m);
+  border-top-color: var(--color-text);
+  animation: spin 1s infinite linear;
+}
+
 //*-*-*-*-*-*-*-*-*-*-*-*-*-*- Title Styles *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 
 .titleStyle1 {

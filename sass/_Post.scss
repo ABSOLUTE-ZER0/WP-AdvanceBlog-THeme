@@ -53,10 +53,10 @@
   &__content {
     display: flex;
     flex-flow: column;
-    // overflow: hidden;
 
     &-main {
       display: flex;
+      flex-wrap: wrap;
       margin-top: 2rem;
       margin-bottom: 10rem;
       flex: 3;
@@ -131,6 +131,9 @@
       flex-flow: row wrap;
 
       &-main {
+        &-content{
+          margin-right: 0;
+        }
         &-sidebar {
           margin-top: 5rem;
         }

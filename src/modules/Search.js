@@ -1,0 +1,11 @@
+class Search{
+  constructor() {
+
+  }
+
+  events(){
+
+  }
+
+
+}

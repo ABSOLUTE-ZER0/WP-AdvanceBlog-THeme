@@ -26,8 +26,9 @@
     <div class="header__overlay"></div>
 
     <div class="header__overlay-search">
-      <input id="header__search" autofocus type="text" placeholder="Type your keyoword and press enter" />
+      <input id="header__search" autofocus type="text" placeholder="Type your keyoword" />
       <div class="header__overlay-search--line"></div>
+      <div class="header__overlay-search-results"></div>
     </div>
 
     <nav class="header__nav">
