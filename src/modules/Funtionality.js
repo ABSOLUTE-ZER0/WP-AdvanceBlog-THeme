@@ -2,7 +2,6 @@ class Funtionality {
   // set theme initially
 
   constructor() {
-
     this.startingActions();
     this.scrollUp();
   }
@@ -16,8 +15,8 @@ class Funtionality {
     var count = 0;
 
     if (!localStorage.getItem("darkMode")) {
-      console.log("set");
       localStorage.setItem("darkMode", "false");
+      switchLightMode();
     } else if (count == 0) {
       if (localStorage.getItem("darkMode") == "true") {
         switchDarkMode();
@@ -25,10 +24,8 @@ class Funtionality {
         switchLightMode();
       }
       count = 1;
-    }
-  };
-
-
+    } 
+  }
 
   // scroll functions
 
@@ -45,7 +42,9 @@ class Funtionality {
       headerElement.classList.toggle("one-edge-shadow", window.scrollY > 0);
       if (logo)
         logo.src =
-        window.scrollY > 80 ? "images/logo-dark.png" : "images/logo-light.png";
+          window.scrollY > 80
+            ? "images/logo-dark.png"
+            : "images/logo-light.png";
     });
 
     function scrollToTop() {
@@ -71,9 +70,7 @@ class Funtionality {
     scrollElement.addEventListener("click", () => {
       scrollToTop();
     });
-  };
-
-
+  }
 
   // remove html tags from comments
 
@@ -81,7 +78,6 @@ class Funtionality {
     var clean = content.textContent || content.innerText;
     console.log(clean);
     return clean;
-  };
-
+  }
 }
-export default Funtionality
+export default Funtionality;

@@ -1,19 +1,21 @@
 <?php
  
-function university_post_types() {
-  register_post_type('event', array(
+function blog_post_types() {
+  register_post_type('game', array(
     'public' => true,
+    'capability_type' => 'game',
+    'map_meta_cap' => true,
     'show_in_rest' => true,
     "supports" => array("title", "editor", "excerpt"),
     'labels' => array(
-      'name' => 'Events',
-      'add_new_item' => 'Add New Event',
+      'name' => 'Game',
+      'add_new_item' => 'Add New Game',
       'edit_item' => 'Edit Event',
-      'all_items' => 'All Events',
-      'singular_name' => 'Event'
+      'all_items' => 'All Games',
+      'singular_name' => 'Game'
     ),
-    'menu_icon' => 'dashicons-calendar'
+    'menu_icon' => 'dashicons-games'
   ));
 }
  
-add_action('init', 'university_post_types');
+add_action('init', 'blog_post_types');

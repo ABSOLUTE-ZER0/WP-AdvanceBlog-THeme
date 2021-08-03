@@ -290,3 +290,49 @@ function postCardDefault() {
 
 <?php
 }}; 
+
+
+
+// redirect subs to home instead of admin-panel
+
+add_action('admin_init', 'subsRedirect');
+
+function subsRedirect(){
+  $currentUser = wp_get_current_user();
+
+  if(count($currentUser->roles) ==1 AND $currentUser->roles[0] == 'subscriber'){
+    wp_redirect(site_url("/"));
+    exit;
+  }
+}
+
+// redirect subs to home instead of admin-panel
+
+add_action('wp_loaded', 'noAdminbarSubs');
+
+function noAdminbarSubs(){
+  $currentUser = wp_get_current_user();
+
+  if(count($currentUser->roles) ==1 AND $currentUser->roles[0] == 'subscriber'){
+    show_admin_bar(false);
+  }
+}
+
+
+// customize login screen
+
+add_filter('login_headerurl', 'headerUrl');
+
+function headerUrl() {
+  return esc_url(site_url("/"));
+}
+
+add_action('login_enqueue_scripts', 'loginCSS');
+
+
+function loginCSS(){
+  wp_enqueue_style("blog_main_styles", get_theme_file_uri("/build/style-index.css"));
+}
+
+
+//like functionailty

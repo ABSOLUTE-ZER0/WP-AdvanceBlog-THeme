@@ -1,0 +1,29 @@
+#login {
+  & > h1 {
+    & > a {
+      background-image: url("../images/logo-dark.png");
+    }
+  }
+
+  color: var(--color-text);
+  
+  & > .message{
+    background-color: var(--color-card);
+
+  }
+
+  & > form {
+    background-color: var(--color-card);
+    border-radius: 1rem;
+  }
+
+  & > p {
+    a {
+      color: var(--color-text) !important;
+
+      &:hover {
+        color: var(--color-hover) !important;
+      }
+    }
+  }
+}

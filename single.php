@@ -32,8 +32,64 @@ the_post(); ?>
     ?>
     <div class="post__content-main">
       <div class="post__content-main-content">
-
         <?php the_content(); ?>
+        <div style="margin-top: 5rem">
+          <h1>Did you find this post userful? Give it a like to let other know!</h1>
+
+          <?php 
+          $likeCount = new WP_Query(array(
+            'post_type' => 'like',
+            'meta_query' => array(
+              array(
+                'key' => "liked_post",
+                "compare" => "=",
+                "value" => get_the_ID()
+              )
+            )
+          ));
+
+          $checkLiked = new WP_Query(array(
+            'author' => get_current_user_id(),
+            'post_type' => 'like',
+            'meta_query' => array(
+              array(
+                'key' => "liked_post",
+                "compare" => "=",
+                "value" => get_the_ID()
+              )
+            )
+          ));
+
+          if($checkLiked->found_posts){ ?>
+          <span class="like-button liked">
+            <i class="  fa fa-heart"><span>
+                <?php echo $likeCount->found_posts;
+              ?>
+              </span></i>
+
+            <i class="  fa fa-heart-o"><span>
+                <?php echo $likeCount->found_posts;
+              ?>
+              </span></i>
+          </span>
+
+          <?php } else { ?>
+          <span class="like-button">
+            <i class="  fa fa-heart-o"><span>
+                <?php echo $likeCount->found_posts;
+              ?>
+              </span></i>
+
+            <i class="  fa fa-heart"><span>
+                <?php echo $likeCount->found_posts;
+              ?>
+              </span></i>
+          </span>
+
+          <?php }
+          ?>
+
+        </div>
       </div>
 
       <div class="post__content-main-sidebar">

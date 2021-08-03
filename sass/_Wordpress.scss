@@ -420,6 +420,7 @@
     color: var(--color-background);
     font-weight: 400;
     cursor: pointer;
+
     &.current {
       font-weight: 500;
       background-color: var(--color-hover);
@@ -628,16 +629,77 @@
   }
 }
 
-
 // missi
 
-.post-password-form{
-  p > input{
+.post-password-form {
+  p > input {
     padding: 0.25rem 1rem;
     background-color: var(--color-hover);
     color: var(--color-text);
     border: 0;
     border-radius: 0.25rem;
     margin-left: 1rem;
+  }
+}
+
+//likebutton
+
+.like-button {
+  border-radius: 1rem;
+  background-color: var(--color-text);
+  padding: 1rem 2rem;
+  margin-top: 2rem;
+  display: flex;
+  cursor: pointer;
+  height: 5rem;
+  align-items: center;
+  position: relative;
+  width: 7rem;
+  transition: 0.5s all cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+
+  i {
+    font-size: 3rem;
+    color: var(--color-active);
+    display: none;
+  }
+
+  span {
+    font-size: 2rem;
+    position: absolute;
+    top: 1rem;
+    left: 6rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--color-card);
+    display: none;
+  }
+
+  &:not(.liked) {
+    .fa-heart-o {
+      display: inline-block;
+    }
+  }
+
+  &.liked {
+    .fa-heart {
+      display: inline-block;
+    }
+
+    &:hover {
+      width: 7rem;
+
+      span {
+        display: none;
+      }
+    }
+  }
+
+  &:hover {
+    width: 10rem;
+
+    span {
+      display: inline-block;
+    }
   }
 }

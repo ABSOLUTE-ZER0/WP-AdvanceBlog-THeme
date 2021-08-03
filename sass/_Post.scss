@@ -68,9 +68,12 @@
         color: var(--color-text);
         font-size: 1.2rem;
 
+        p {
+          font-size: 1.2rem;
+        }
+
         * {
           color: var(--color-text);
-          font-size: 1.2rem;
           max-width: 100% !important;
         }
       }
@@ -131,9 +134,10 @@
       flex-flow: row wrap;
 
       &-main {
-        &-content{
+        &-content {
           margin-right: 0;
         }
+
         &-sidebar {
           margin-top: 5rem;
         }
@@ -153,8 +157,9 @@
     }
 
     &__content {
-    flex-flow: column wrap;
-    &-main {
+      flex-flow: column wrap;
+
+      &-main {
         padding: 0;
 
         &-sidebar {
@@ -165,9 +170,12 @@
           font-size: 1rem;
           margin-right: 0rem;
 
+          p {
+            font-size: 1rem;
+          }
+
           * {
             color: var(--color-text);
-            font-size: 1rem;
           }
         }
       }

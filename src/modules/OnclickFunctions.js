@@ -25,6 +25,9 @@ class OnclickFunctions {
       ".header__overlay-search-results"
     );
 
+    this.likeButton = document.querySelector('.like-button');
+    this.likeButtonIcon = document.querySelector('.like-button>i');
+
     this.searchOverlayOpen = false;
 
     this.spinnerActive = false;
@@ -72,6 +75,12 @@ class OnclickFunctions {
     this.sidebarTags.addEventListener("click", () => {
       this.sidebarPosts("tags");
     });
+
+    this.likeButton.addEventListener('click', () => this.toggleLike());
+  }
+
+  toggleLike() {
+    this.likeButton.classList.toggle("liked");
   }
 
   typingLogic() {
@@ -91,7 +100,7 @@ class OnclickFunctions {
             "<div class='spinner-loader'></div>";
           this.spinnerActive = true;
         }
-        this.typingTimer = setTimeout(this.getResults.bind(this), 500);
+        this.typingTimer = setTimeout(this.getResults.bind(this), 1000);
       }
     }
 

@@ -71,6 +71,7 @@ html[data-theme=light] {
   --color-categories-hover: rgb(255, 255, 255);
 }
 
+html,
 html[data-theme=dark] {
   --color-background: rgb(0, 0, 0);
   --color-background-m: rgba(0, 0, 0, 0.65);
@@ -808,7 +809,6 @@ html.transition *::after {
 .header__overlay-search .header__overlay-search-results-post h2 {
   display: flex;
   flex-wrap: wrap;
-  color: var(--color-text);
   margin-left: 2rem;
 }
 .header__overlay-search .header__overlay-search-results-post p {
@@ -873,6 +873,8 @@ html.transition *::after {
 }
 .header__nav--links {
   display: flex;
+  margin-bottom: 0;
+  align-items: center;
 }
 .header__nav--links .menu {
   display: flex;
@@ -913,10 +915,24 @@ html.transition *::after {
   -webkit-animation: upwards 1s forwards;
           animation: upwards 1s forwards;
 }
+.header__nav--links__signup-container {
+  height: 4rem;
+  padding: 0 1rem;
+  color: var(--color-active) !important;
+  text-transform: capitalize;
+}
+.header__nav--links__signup-container:hover {
+  color: inherit !important;
+}
+.header__nav--links > span > img {
+  width: 4rem;
+  height: auto;
+}
 .header__nav--links__toggle-container {
   display: flex;
   align-items: center;
-  margin: 0 1rem;
+  margin: 0 2rem;
+  margin-right: 4rem;
 }
 .header__nav--links__toggle-container input[type=checkbox] {
   cursor: pointer;
@@ -928,15 +944,16 @@ html.transition *::after {
   -moz-appearance: none;
   background-color: var(--color-white);
   border-radius: 2.5rem;
-  box-shadow: inset 0 0 0.6rem 0.1rem #bebebe;
+  box-shadow: inset 0 0 0.6rem 0.1rem var(--color-hover);
   transition: all 0.5s ease-in-out;
-  background-color: var(--color-hover);
+  background-color: var(--color-hover-m);
+  border: 1px solid var(--color-hover);
 }
 .header__nav--links__toggle-container input[type=checkbox]::before,
 .header__nav--links__toggle-container input[type=checkbox]::after {
   content: "";
   position: absolute;
-  top: 0.8rem;
+  top: 0.7rem;
   width: 1.5rem;
   height: 1.5rem;
   border-radius: 50%;
@@ -963,6 +980,7 @@ html.transition *::after {
   color: inherit;
   margin: 0 1rem;
   cursor: pointer;
+  margin-left: 2rem;
 }
 .header__nav--links li.current-menu-item > a:link {
   color: inherit;
@@ -983,6 +1001,14 @@ html.transition *::after {
   .header__nav--links .menu-item a:link,
 .header__nav--links .menu-item a:visited {
     font-size: 1.7rem;
+  }
+  .header__nav--links__toggle-container {
+    margin: 0 1rem;
+    margin-right: 2rem;
+  }
+  .header__nav--links__search-container {
+    margin: 0;
+    margin-left: 1rem;
   }
 }
 @media screen and (max-width: 767px) {
@@ -2007,9 +2033,11 @@ html.transition *::after {
   color: var(--color-text);
   font-size: 1.2rem;
 }
+.post__content-main-content p {
+  font-size: 1.2rem;
+}
 .post__content-main-content * {
   color: var(--color-text);
-  font-size: 1.2rem;
   max-width: 100% !important;
 }
 .post__content-main-sidebar {
@@ -2082,9 +2110,11 @@ html.transition *::after {
     font-size: 1rem;
     margin-right: 0rem;
   }
+  .post__content-main-content p {
+    font-size: 1rem;
+  }
   .post__content-main-content * {
     color: var(--color-text);
-    font-size: 1rem;
   }
 }
 @media screen and (max-width: 399px) {
@@ -2649,6 +2679,54 @@ html.transition *::after {
   margin-left: 1rem;
 }
 
+.like-button {
+  border-radius: 1rem;
+  background-color: var(--color-text);
+  padding: 1rem 2rem;
+  margin-top: 2rem;
+  display: flex;
+  cursor: pointer;
+  height: 5rem;
+  align-items: center;
+  position: relative;
+  width: 7rem;
+  transition: 0.5s all cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+.like-button i {
+  font-size: 3rem;
+  color: var(--color-active);
+  display: none;
+}
+.like-button span {
+  font-size: 2rem;
+  position: absolute;
+  top: 1rem;
+  left: 6rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--color-card);
+  display: none;
+}
+.like-button:not(.liked) .fa-heart-o {
+  display: inline-block;
+}
+.like-button.liked .fa-heart {
+  display: inline-block;
+}
+.like-button.liked:hover {
+  width: 7rem;
+}
+.like-button.liked:hover span {
+  display: none;
+}
+.like-button:hover {
+  width: 10rem;
+}
+.like-button:hover span {
+  display: inline-block;
+}
+
 .archivepage .archivepage__image {
   position: relative;
   width: 100%;
@@ -2846,6 +2924,25 @@ html.transition *::after {
   .archivepage .archivepage__main {
     padding: 1rem;
   }
+}
+#login {
+  color: var(--color-text);
+}
+#login > h1 > a {
+  background-image: url(images/logo-dark.29867b67.png);
+}
+#login > .message {
+  background-color: var(--color-card);
+}
+#login > form {
+  background-color: var(--color-card);
+  border-radius: 1rem;
+}
+#login > p a {
+  color: var(--color-text) !important;
+}
+#login > p a:hover {
+  color: var(--color-hover) !important;
 }
 
 /*# sourceMappingURL=style-index.css.map*/

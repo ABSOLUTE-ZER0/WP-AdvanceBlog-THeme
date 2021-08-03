@@ -10,11 +10,9 @@
   transition: all 0.5s ease-in-out;
   color: var(--color-text);
   z-index: 100;
-  background-image: linear-gradient(
-    to bottom,
-    var(--color-header-m) 1%,
-    transparent 100%
-  );
+  background-image: linear-gradient(to bottom,
+      var(--color-header-m) 1%,
+      transparent 100%);
 
   &.active {
     background-color: var(--color-header);
@@ -140,8 +138,7 @@
           h2 {
             display: flex;
             flex-wrap: wrap;
-          color: var(--color-text);
-          margin-left: 2rem;
+            margin-left: 2rem;
           }
 
           p {
@@ -153,7 +150,7 @@
         }
       }
 
-      & > input {
+      &>input {
         background: none;
         border: none;
         margin-left: 50vw;
@@ -217,12 +214,15 @@
 
     &--links {
       display: flex;
+      margin-bottom: 0;
+      align-items: center;
 
       & .menu {
         display: flex;
       }
 
       & .menu-item {
+
         a:link,
         a:visited {
           margin: 0 1rem;
@@ -266,11 +266,30 @@
         animation: upwards 1s forwards;
       }
 
+      &__signup-container {
+        height: 4rem;
+        padding: 0 1rem;
+        color: var(--color-active) !important;
+        text-transform: capitalize;
+
+        &:hover {
+          color: inherit !important;
+        }
+      }
+
+      &>span{
+        &>img{
+          width: 4rem;
+          height: auto;
+        }
+      }
+
       // Dark Mode Toggle Button
       &__toggle-container {
         display: flex;
         align-items: center;
-        margin: 0 1rem;
+        margin: 0 2rem;
+        margin-right: 4rem;
 
         input[type="checkbox"] {
           cursor: pointer;
@@ -281,16 +300,17 @@
           -moz-appearance: none;
           background-color: var(--color-white);
           border-radius: 2.5rem;
-          box-shadow: inset 0 0 0.6rem 0.1rem rgb(190, 190, 190);
+          box-shadow: inset 0 0 0.6rem 0.1rem var(--color-hover);
           transition: all 0.5s ease-in-out;
-          background-color: var(--color-hover);
+          background-color: var(--color-hover-m);
+          border: 1px solid var(--color-hover);
         }
 
         input[type="checkbox"]::before,
         input[type="checkbox"]::after {
           content: "";
           position: absolute;
-          top: 0.8rem;
+          top: 0.7rem;
           width: 1.5rem;
           height: 1.5rem;
           border-radius: 50%;
@@ -323,9 +343,11 @@
         color: inherit;
         margin: 0 1rem;
         cursor: pointer;
+        margin-left: 2rem;
+
       }
 
-      li.current-menu-item > a:link {
+      li.current-menu-item>a:link {
         color: inherit;
         font-weight: 500;
 
@@ -335,7 +357,7 @@
         }
       }
 
-      li.current-menu-item > a:hover {
+      li.current-menu-item>a:hover {
         color: var(--color-text-m);
 
         &::after {
@@ -351,10 +373,21 @@
     &__nav {
       &--links {
         & .menu-item {
+
           a:link,
           a:visited {
             font-size: 1.7rem;
           }
+        }
+
+        &__toggle-container {
+          margin: 0 1rem;
+          margin-right: 2rem;
+        }
+
+        &__search-container {
+          margin: 0;
+          margin-left: 1rem;
         }
       }
     }
@@ -397,6 +430,7 @@
         }
 
         & .menu-item {
+
           a:link,
           a:visited {
             transform-origin: left;
@@ -409,6 +443,8 @@
             transition: transform 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
           }
         }
+
+
 
         &__item:nth-child(odd) {
           animation: downwards 1s right;
@@ -430,6 +466,7 @@
 
     &.active {
       .header__menu {
+
         &--line,
         &--line::before,
         &--line::after {
@@ -498,7 +535,7 @@
           }
         }
 
-        & > input {
+        &>input {
           &.typed {
             height: fit-content;
           }
@@ -510,6 +547,7 @@
 
 // Upwards
 @keyframes upwards {
+
   // Starting point
   from {
     transform: translateY(100%);
@@ -525,6 +563,7 @@
 
 // Downwards
 @keyframes downwards {
+
   // Starting point
   from {
     transform: translateY(-100%);
@@ -540,6 +579,7 @@
 
 // TO LEFT
 @keyframes left {
+
   // Starting point
   from {
     transform: translateX(-100%);
@@ -555,6 +595,7 @@
 
 // TO RIGHT
 @keyframes right {
+
   // Starting point
   from {
     transform: translateX(-100%);

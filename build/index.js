@@ -2273,8 +2273,8 @@ class Funtionality {
     var count = 0;
 
     if (!localStorage.getItem("darkMode")) {
-      console.log("set");
       localStorage.setItem("darkMode", "false");
+      switchLightMode();
     } else if (count == 0) {
       if (localStorage.getItem("darkMode") == "true") {
         switchDarkMode();
@@ -2284,9 +2284,9 @@ class Funtionality {
 
       count = 1;
     }
-  }
+  } // scroll functions
 
-  // scroll functions
+
   scrollUp() {
     const logo = document.getElementById("header__logo");
     const scrollElement = document.querySelector(".scroll");
@@ -2322,9 +2322,9 @@ class Funtionality {
     scrollElement.addEventListener("click", () => {
       scrollToTop();
     });
-  }
+  } // remove html tags from comments
 
-  // remove html tags from comments
+
   removeHTML(content) {
     var clean = content.textContent || content.innerText;
     console.log(clean);
@@ -2358,6 +2358,8 @@ class OnclickFunctions {
     this.sidebarTags = document.querySelector(".sidebar__posts-tabs-tags");
     this.searchBar = document.querySelector("#header__search");
     this.searchResultsDiv = document.querySelector(".header__overlay-search-results");
+    this.likeButton = document.querySelector('.like-button');
+    this.likeButtonIcon = document.querySelector('.like-button>i');
     this.searchOverlayOpen = false;
     this.spinnerActive = false;
     this.prevSearchValue = "";
@@ -2393,6 +2395,11 @@ class OnclickFunctions {
     this.sidebarTags.addEventListener("click", () => {
       this.sidebarPosts("tags");
     });
+    this.likeButton.addEventListener('click', () => this.toggleLike());
+  }
+
+  toggleLike() {
+    this.likeButton.classList.toggle("liked");
   }
 
   typingLogic() {
@@ -2413,7 +2420,7 @@ class OnclickFunctions {
           this.spinnerActive = true;
         }
 
-        this.typingTimer = setTimeout(this.getResults.bind(this), 500);
+        this.typingTimer = setTimeout(this.getResults.bind(this), 1000);
       }
     }
 
