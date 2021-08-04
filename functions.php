@@ -1,6 +1,7 @@
 <?php
 
 require get_theme_file_path("/inc/customSearchAPI.php");
+require get_theme_file_path("/inc/customLikeAPI.php");
 
 function blog_custom_rest(){
   register_rest_field('post', 'authorName', array(
@@ -18,7 +19,8 @@ function blog_header_files() {
 }
 
   wp_localize_script("blog_main_script", "blogData", array(
-    'root_url' => get_site_url()
+    'root_url' => get_site_url(),
+    'nonce' => wp_create_nonce('wp_rest')
   ));
 } 
  
@@ -124,40 +126,67 @@ add_action( 'widgets_init', 'my_custom_sidebar' );
 
 
 
-function wpb_set_post_views($postID) {
-  $count_key = 'wpb_post_views_count';
+function wpb_set_post_likes($postID) {
+  $count_key = 'wp_post_like_count';
+
+  $checkLiked = new WP_Query(array(
+    'author' => get_current_user_id(),
+    'post_type' => 'like',
+    'meta_query' => array(
+      array(
+        'key' => "liked_post",
+        "compare" => "=",
+        "value" => $postID
+      )
+    )
+  ));
+
+  $currentCount = $checkLiked->found_posts;
   $count = get_post_meta($postID, $count_key, true);
+
   if($count==''){
-      $count = 0;
       delete_post_meta($postID, $count_key);
-      add_post_meta($postID, $count_key, '0');
+      add_post_meta($postID, $count_key, $currentCount);
   }else{
-      $count++;
-      update_post_meta($postID, $count_key, $count);
+      update_post_meta($postID, $count_key, $currentCount);
   }
 }
 //To keep the count accurate, lets get rid of prefetching
 remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 
 
-function wpb_track_post_views ($post_id) {
+function wpb_track_post_likes ($post_id) {
   if ( !is_single() ) return;
   if ( empty ( $post_id) ) {
       global $post;
       $post_id = $post->ID;    
   }
-  wpb_set_post_views($post_id);
+  wpb_set_post_likes($post_id);
 }
-add_action( 'wp_head', 'wpb_track_post_views');
+add_action( 'wp_head', 'wpb_track_post_likes');
 
 
-function wpb_get_post_views($postID){
-  $count_key = 'wpb_post_views_count';
+function wpb_get_post_likes($postID){
+  $count_key = 'wp_post_like_count';
+  
+  $checkLiked = new WP_Query(array(
+    'author' => get_current_user_id(),
+    'post_type' => 'like',
+    'meta_query' => array(
+      array(
+        'key' => "liked_post",
+        "compare" => "=",
+        "value" => $postID
+      )
+    )
+  ));
+
+  $currentCount = $checkLiked->found_posts;
   $count = get_post_meta($postID, $count_key, true);
   if($count==''){
       delete_post_meta($postID, $count_key);
-      add_post_meta($postID, $count_key, '0');
-      return "0";
+      add_post_meta($postID, $count_key, $currentCount);
+      return $currentCount;
   }
   return $count;
 }

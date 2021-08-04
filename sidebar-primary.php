@@ -51,7 +51,7 @@
         $popularpost = new WP_Query( array( 
           'posts_per_page' => 5,
           'ignore_sticky_posts' => true,
-          'meta_key' => 'wpb_post_views_count', 
+          'meta_key' => 'wp_post_like_count', 
           'orderby' => 'meta_value_num', 
           'order' => 'DESC'  ) );
 

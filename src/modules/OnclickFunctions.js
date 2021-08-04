@@ -25,8 +25,8 @@ class OnclickFunctions {
       ".header__overlay-search-results"
     );
 
-    this.likeButton = document.querySelector('.like-button');
-    this.likeButtonIcon = document.querySelector('.like-button>i');
+    this.likeButton = document.querySelector(".like-button");
+    this.likeButtonIcon = document.querySelector(".like-button>i");
 
     this.searchOverlayOpen = false;
 
@@ -44,43 +44,122 @@ class OnclickFunctions {
       if (e.key == "Escape" && this.searchOverlayOpen) this.removeSearch();
     });
 
-    this.searchBar.addEventListener("keyup", (e) => {
-      this.typingLogic();
-    });
+    if (this.searchBar) {
+      this.searchBar.addEventListener("keyup", (e) => {
+        this.typingLogic();
+      });
+    }
 
-    this.searchIcon.addEventListener("click", () => {
-      this.addSearch();
-    });
+    if (this.searchIcon) {
+      this.searchIcon.addEventListener("click", () => {
+        this.addSearch();
+      });
+    }
 
-    this.searchCloseIcon.addEventListener("click", () => {
-      this.removeSearch();
-    });
+    if (this.searchCloseIcon) {
+      this.searchCloseIcon.addEventListener("click", () => {
+        this.removeSearch();
+      });
+    }
 
-    this.menuToggleIcon.addEventListener("click", () => {
-      this.menuToggle();
-    });
+    if (this.menuToggleIcon) {
+      this.menuToggleIcon.addEventListener("click", () => {
+        this.menuToggle();
+      });
+    }
 
-    this.sidebarRecent.addEventListener("click", () => {
-      this.sidebarPosts("recents");
-    });
+    if (this.sidebarRecent) {
+      this.sidebarRecent.addEventListener("click", () => {
+        this.sidebarPosts("recents");
+      });
+    }
 
-    this.sidebarPopular.addEventListener("click", () => {
-      this.sidebarPosts("popular");
-    });
+    if (this.sidebarPopular) {
+      this.sidebarPopular.addEventListener("click", () => {
+        this.sidebarPosts("popular");
+      });
+    }
 
-    this.sidebarComments.addEventListener("click", () => {
-      this.sidebarPosts("comments");
-    });
+    if (this.sidebarComments) {
+      this.sidebarComments.addEventListener("click", () => {
+        this.sidebarPosts("comments");
+      });
+    }
 
-    this.sidebarTags.addEventListener("click", () => {
-      this.sidebarPosts("tags");
-    });
+    if (this.sidebarTags) {
+      this.sidebarTags.addEventListener("click", () => {
+        this.sidebarPosts("tags");
+      });
+    }
 
-    this.likeButton.addEventListener('click', () => this.toggleLike());
+    if (this.likeButton) {
+      this.likeButton.addEventListener("click", () => this.toggleLike());
+    }
   }
 
   toggleLike() {
-    this.likeButton.classList.toggle("liked");
+    if (this.likeButton.classList.contains("liked")) {
+      this.removeLike(this.likeButton);
+    } else {
+      this.addLike(this.likeButton);
+    }
+  }
+
+  async addLike(currentLikeButton) {
+    const axios = require("axios");
+    currentLikeButton.classList.add("liked");
+
+    try {
+      let config = {
+        headers: {
+          "X-WP-Nonce": blogData.nonce,
+        },
+      };
+
+      let data = {
+        postId: currentLikeButton.dataset.postid,
+      };
+
+      const response = await axios.post(
+        `${blogData.root_url}/wp-json/blog/v1/like`,
+        data,
+        config
+      );
+
+      if (response.data.status == "liked") {
+        currentLikeButton.setAttribute("data-likeid", response.data.id )
+      }
+
+
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async removeLike(currentLikeButton) {
+    const axios = require("axios");
+    currentLikeButton.classList.remove("liked");
+
+    try {
+      let config = {
+        headers: {
+          "X-WP-Nonce": blogData.nonce,
+        },data: {
+          "likeId": currentLikeButton.dataset.likeid,
+        }
+      };
+
+      const response = await axios.delete(
+        `${blogData.root_url}/wp-json/blog/v1/like`,
+        config
+      );
+
+      if (response.data == "unliked") {
+        currentLikeButton.setAttribute("data-likeid", '')
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   typingLogic() {

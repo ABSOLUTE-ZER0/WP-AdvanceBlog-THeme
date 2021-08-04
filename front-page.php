@@ -137,7 +137,7 @@
                 array( 
                   'posts_per_page' => 3,
                   'ignore_sticky_posts' => true,
-                  'meta_key' => 'wpb_post_views_count', 
+                  'meta_key' => 'wp_post_like_count', 
                   'orderby' => 'meta_value_num', 
                   'order' => 'DESC',  
                 ));

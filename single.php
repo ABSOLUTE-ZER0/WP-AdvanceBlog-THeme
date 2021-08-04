@@ -48,47 +48,36 @@ the_post(); ?>
             )
           ));
 
-          $checkLiked = new WP_Query(array(
-            'author' => get_current_user_id(),
-            'post_type' => 'like',
-            'meta_query' => array(
-              array(
-                'key' => "liked_post",
-                "compare" => "=",
-                "value" => get_the_ID()
+          $userLiked = false;
+
+          if(is_user_logged_in()){
+            $checkLiked = new WP_Query(array(
+              'author' => get_current_user_id(),
+              'post_type' => 'like',
+              'meta_query' => array(
+                array(
+                  'key' => "liked_post",
+                  "compare" => "=",
+                  "value" => get_the_ID()
+                )
               )
-            )
-          ));
+            ));
 
-          if($checkLiked->found_posts){ ?>
-          <span class="like-button liked">
-            <i class="  fa fa-heart"><span>
-                <?php echo $likeCount->found_posts;
-              ?>
-              </span></i>
+            if($checkLiked->found_posts){
+              $userLiked = true;
+            };
+          }
 
-            <i class="  fa fa-heart-o"><span>
-                <?php echo $likeCount->found_posts;
-              ?>
-              </span></i>
-          </span>
-
-          <?php } else { ?>
-          <span class="like-button">
-            <i class="  fa fa-heart-o"><span>
-                <?php echo $likeCount->found_posts;
-              ?>
-              </span></i>
-
-            <i class="  fa fa-heart"><span>
-                <?php echo $likeCount->found_posts;
-              ?>
-              </span></i>
-          </span>
-
-          <?php }
           ?>
 
+          <span data-postid="<?php the_ID() ?>" data-likeid="<?php if($checkLiked->found_posts) echo $checkLiked->posts[0]->ID; ?>" class="like-button <?php if($userLiked) echo 'liked' ?>">
+            <i class="fa fa-heart"></i>
+
+            <i class="fa fa-heart-o"><span>
+                <?php echo $likeCount->found_posts;
+              ?>
+              </span></i>
+          </span>
         </div>
       </div>
 
@@ -96,8 +85,8 @@ the_post(); ?>
         <div class="post__content-main-sidebar-metadata">
           <div>
             <div>
-              <h3>views</h3>
-              <p><?php echo wpb_get_post_views(get_the_ID()); ?></p>
+              <h3>likes</h3>
+              <p><?php echo wpb_get_post_likes(get_the_ID()); ?></p>
             </div>
           </div>
           <div>
