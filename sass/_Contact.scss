@@ -2,9 +2,17 @@
   display: flex;
   max-height: 100vh;
   overflow: hidden;
+  height: 100vh;
 
   &__form {
     flex: 1;
+    align-self: center;
+    margin: 0 5rem;
+    color: var(--color-text);
+
+    h1 {
+      text-align: center;
+    }
   }
 
   &__image {
@@ -42,7 +50,10 @@
 
     & > &-details {
       text-align: center;
-      margin: 3rem 0;
+
+      & > div {
+        margin: 3rem 0;
+      }
 
       i {
         font-size: 4rem;
@@ -57,5 +68,46 @@
         font-size: 1.5rem;
       }
     }
+  }
+
+  @include media-tablet {
+    &__form {
+      flex: 1;
+      align-self: center;
+      padding: 0 5rem;
+      margin: 0;
+      background-image: url("../images/contactus.jpg");
+      height: 100vh;
+      background-size: cover;
+      background-position: center;
+      color: var(--color-white);
+      display: flex;
+      flex-direction: column;
+      align-items: unset;
+      justify-content: center;
+      position: relative;
+
+      &-opacity {
+        width: 100%;
+        height: 100vh;
+        background: var(--color-contact-filter);
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        margin: 0;
+      }
+  
+  
+  
+      h1 {
+        text-align: center;
+
+        &::before,
+        &::after{
+          background: none;
+        }
+      }
+    }  
   }
 }
