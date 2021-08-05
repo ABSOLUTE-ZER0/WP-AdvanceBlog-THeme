@@ -34,6 +34,8 @@ html[data-theme="light"] {
   --color-categories-2: rgb(255, 0, 242);
   --color-categories-3: rgb(255, 123, 0);
   --color-categories-hover: rgb(255, 255, 255);
+
+  --color-contact-filter: linear-gradient(0deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.5) 90%, rgba(255,255,255,0.8) 90%, rgba(255,255,255,0.8) 100%);
 }
 
 // Dark Color Palette (Custom Properties)
@@ -73,6 +75,9 @@ html[data-theme="dark"] {
   --color-categories-2: rgb(193, 126, 255);
   --color-categories-3: rgb(228, 83, 0);
   --color-categories-hover: rgba(0, 0, 0, 0.692);
+
+  --color-contact-filter: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 90%, rgba(0, 0, 0, 0.8) 90%, rgba(0, 0, 0, 0.8) 100%);
+
 }
 
 //*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* Colors *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*

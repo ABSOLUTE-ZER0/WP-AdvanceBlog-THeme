@@ -65,7 +65,7 @@
           <div class="about__short-card">
             <img src=<?php echo get_theme_file_uri("images/knowledge.png"); ?> alt="knowledge-img" />
             <h1>knowledge</h1>
-            <p>We aim to deliver knowledge and information for FREE.</p>
+            <p>We aim to deliver information ranging from gaming to coding a game and suggestions for dressing you and your food!</p>
           </div>
           <div class="about__short-card">
             <img src=<?php echo get_theme_file_uri("images/quality.png"); ?> alt="quality-img" />

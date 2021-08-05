@@ -69,6 +69,7 @@ html[data-theme=light] {
   --color-categories-2: rgb(255, 0, 242);
   --color-categories-3: rgb(255, 123, 0);
   --color-categories-hover: rgb(255, 255, 255);
+  --color-contact-filter: linear-gradient(0deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.5) 90%, rgba(255,255,255,0.8) 90%, rgba(255,255,255,0.8) 100%);
 }
 
 html,
@@ -106,6 +107,7 @@ html[data-theme=dark] {
   --color-categories-2: rgb(193, 126, 255);
   --color-categories-3: rgb(228, 83, 0);
   --color-categories-hover: rgba(0, 0, 0, 0.692);
+  --color-contact-filter: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 90%, rgba(0, 0, 0, 0.8) 90%, rgba(0, 0, 0, 0.8) 100%);
 }
 
 :root {
@@ -2943,6 +2945,58 @@ html.transition *::after {
 }
 #login > p a:hover {
   color: var(--color-hover) !important;
+}
+
+.contact {
+  display: flex;
+  max-height: 100vh;
+  overflow: hidden;
+}
+.contact__form {
+  flex: 1;
+}
+.contact__image {
+  flex: 1;
+  background-image: url(images/contactus.35e5bbdc.jpg);
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.contact__image-opacity {
+  width: 100%;
+  height: 100vh;
+  background: var(--color-contact-filter);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  margin: 0;
+}
+.contact__image > h1, .contact__image > h3, .contact__image > .contact__image-details {
+  margin-bottom: 2rem;
+  padding: 0 10rem;
+  z-index: 5;
+  cursor: default;
+}
+.contact__image > .contact__image-details {
+  text-align: center;
+  margin: 3rem 0;
+}
+.contact__image > .contact__image-details i {
+  font-size: 4rem;
+  color: var(--color-hover);
+}
+.contact__image > .contact__image-details h5 {
+  font-size: 2.5rem;
+}
+.contact__image > .contact__image-details p {
+  font-size: 1.5rem;
 }
 
 /*# sourceMappingURL=style-index.css.map*/
