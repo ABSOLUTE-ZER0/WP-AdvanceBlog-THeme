@@ -148,14 +148,16 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
 
           <?php postCard($recentPosts); ?>
 
+          <?php if($recentPosts->max_num_pages > 1){ ?>
+
           <div class="pagination-div">
             <div class="pagination-container">
               <?php echo paginate_links(array(
                   'total' => $recentPosts->max_num_pages,
-                )); wp_reset_postdata();?>
+                ));?>
             </div>
           </div>
-
+          <?php }; wp_reset_postdata();?>
         </div>
       </div>
     </div>

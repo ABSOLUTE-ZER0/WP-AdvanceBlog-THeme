@@ -244,6 +244,8 @@
     margin-top: 3rem;
     margin-bottom: 7rem;
     color: var(--color-text);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 
     .comment-notes {
       width: 100%;
@@ -701,5 +703,114 @@
     span {
       display: inline-block;
     }
+  }
+}
+
+.wordpress__content {
+  line-height: 1.7;
+
+  .wp-block-spacer {
+    height: 5rem !important;
+  }
+
+  * {
+    color: var(--color-text);
+    max-width: 100% !important;
+    height: auto;
+  }
+
+  p {
+    font-size: 1.5rem;
+  }
+
+  a{
+    color: var(--color-hover);
+
+    &:hover{
+      color: var(--color-active);
+    }
+  }
+
+  ul {
+    margin: 2.5rem 2rem;
+    margin-right: 0;
+
+    li {
+      list-style: unset;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-transform: capitalize;
+
+    a{
+      color: inherit;
+    }
+  }
+
+  h2 {
+    margin-top: 5rem;
+    margin-bottom: 1.5rem;
+    font-size: 2.2rem;
+    position: relative;
+    font-weight: 700;
+    padding-bottom: 0.5rem;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 5px;
+      width: 55px;
+      background-color: var(--color-hover-m);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 55px;
+      bottom: 2px;
+      height: 1px;
+      width: 95%;
+      max-width: 255px;
+      background-color: var(--color-hover);
+    }
+  }
+
+  h3 {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    font-size: 2.2rem;
+    font-weight: 600;
+    border-bottom: 2px solid var(--color-active);
+    width: fit-content;
+    padding-right: 5rem;
+  }
+
+  h4 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-size: 2rem;
+    color: var(--color-active);
+  }
+
+  strong,
+  em {
+    color: var(--color-active);
+  }
+
+  figcaption {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-active);
   }
 }

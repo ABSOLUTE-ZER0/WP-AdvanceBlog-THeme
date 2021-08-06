@@ -72,8 +72,6 @@
 
   @include media-tablet {
     &__form {
-      flex: 1;
-      align-self: center;
       padding: 0 5rem;
       margin: 0;
       background-image: url("../images/contactus.jpg");
@@ -98,11 +96,7 @@
         margin: 0;
       }
   
-  
-  
       h1 {
-        text-align: center;
-
         &::before,
         &::after{
           background: none;

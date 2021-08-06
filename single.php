@@ -31,7 +31,7 @@ the_post(); ?>
       }
     ?>
     <div class="post__content-main">
-      <div class="post__content-main-content">
+      <div class="post__content-main-content wordpress__content">
         <?php the_content(); ?>
         <div style="margin-top: 5rem">
           <h1>Did you find this post userful? Give it a like to let other know!</h1>
