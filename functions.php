@@ -13,7 +13,14 @@ function blog_custom_rest(){
 add_action('rest_api_init', 'blog_custom_rest');
 
 function blog_header_files() {
-  wp_enqueue_script("blog_main_script", get_theme_file_uri("/build/index.js"), array('jquery'),1.0, true);
+
+  wp_enqueue_script("blog_bootstrap_script", get_theme_file_uri("/external/bootstrap.bundle.min.js"), array(),1.0, true);
+  wp_enqueue_style("blog_bootstrap_styles", get_theme_file_uri("/external/bootstrap.min.css"));
+
+  wp_enqueue_script("blog_fontawesome_script", get_theme_file_uri("/external/fontawesome.js"), array(),1.0, true);
+  wp_enqueue_style("blog_fontsgoogle_styles", get_theme_file_uri("/external/google.css"));
+
+  wp_enqueue_script("blog_main_script", get_theme_file_uri("/build/index.js"), array(),1.0, true);
   wp_enqueue_style("blog_main_styles", get_theme_file_uri("/build/style-index.css"));
   if (is_singular() && comments_open() && (get_option('thread_comments') == 1)) {
     wp_enqueue_script('comment-reply', 'wp-includes/js/comment-reply', array(), false, true);
@@ -87,9 +94,9 @@ add_action( 'save_post', 'sm_meta_save' );
 
 function gb_comment_form_tweaks ($fields) {
     //add placeholders and remove labels
-    $fields['author'] = '<div><i class="fas fa-user"></i><input type="text" name="name" placeholder="Name *" required="required"></div>';
+    $fields['author'] = '<div><i class="fas fa-user"></i><input type="text" name="author" id="author" placeholder="Name *" required="required"></div>';
 
-    $fields['email'] = '<div><i class="far fa-envelope"></i><input type="email" name="email" placeholder="Email *" required="required"></div>';	
+    $fields['email'] = '<div><i class="far fa-envelope"></i><input type="email" name="email" id="email" placeholder="Email *" required="required"></div>';	
 
     //unset comment so we can recreate it at the bottom
     unset($fields['comment']);
@@ -250,4 +257,11 @@ function loginCSS(){
 }
 
 
-//like functionailty
+function getSlideshowFilter(){
+  global $themeLightOrDark;
+  if($themeLightOrDark == "dark"){
+    return get_theme_file_uri("images/slideshow-waves-dark.png");
+  } else if ($themeLightOrDark == "light") {
+    return get_theme_file_uri("images/slideshow-waves-light.png");
+  }
+}

@@ -2,7 +2,7 @@
 
 <div class="contact">
 
-  <div class="contact__form">
+  <div style="--contact-bg: url(<?php echo get_theme_file_uri("/images/contactus.webp") ?>)" class="contact__form">
     <div class="contact__image-opacity d-lg-none"></div>
     <div style="z-index: 2">
       <h1 class="titleStyle4">Contact Us</h1>
@@ -18,7 +18,7 @@ if ( have_posts() ) {
 
   </div>
 
-  <div class="contact__image d-none d-lg-flex">
+  <div style="--contact-bg: url(<?php echo get_theme_file_uri("/images/contactus.webp") ?>)" class="contact__image d-none d-lg-flex">
     <div class="contact__image-opacity"></div>
 
     <h1>Don't be shy</h1>

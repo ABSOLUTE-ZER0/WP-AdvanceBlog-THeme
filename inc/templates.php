@@ -1,5 +1,7 @@
 <?php 
 
+global $themeLightOrDark;
+
 function footerNoContent() { ?>
 
 <div class="scroll"></div>
@@ -21,7 +23,7 @@ function footerNoContent() { ?>
         }
       };
     });
-
+ 
   let smoothTrans = () => {
     htmlElement.classList.add("transition");
 
@@ -30,10 +32,13 @@ function footerNoContent() { ?>
     }, 500);
   };
 
-  const switchDarkMode = () => {
-    checkbox.checked = true;
+  const switchDarkMode = (trans = true) => {
+    $themeLightOrDark = "dark";
+    checkbox.checked = true; 
     localStorage.setItem("darkMode", "true")
-    smoothTrans();
+    if(trans){
+      smoothTrans();
+    }
     if (logo) {
       logo.src = "images/logo-dark.png";
     }
@@ -44,10 +49,13 @@ function footerNoContent() { ?>
   };
 
 
-  const switchLightMode = () => {
+  const switchLightMode = (trans = true) => {
+    $themeLightOrDark = "light";
     checkbox.checked = false;
     localStorage.setItem("darkMode", "false")
-    smoothTrans();
+    if(trans){
+      smoothTrans();
+    }
     if (logo) {
       logo.src = "images/logo-light.png";
     }
@@ -58,10 +66,6 @@ function footerNoContent() { ?>
   };
 </script>
 
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-</script>
 <?php wp_footer(); ?>
 </body>
 
@@ -79,7 +83,7 @@ function postCard($cardPosts) {
   <div class="card posts-card">
 
     <img onclick="window.location.href = '<?php the_permalink() ?>';" class="card-img-top"
-      src="<?php if(has_post_thumbnail()) { echo get_the_post_thumbnail_url();} else { echo get_theme_file_uri("/images/default.jpg");} ?>" />
+      src="<?php if(has_post_thumbnail()) { echo get_the_post_thumbnail_url();} else { echo get_theme_file_uri("/images/default.webp");} ?>" />
 
     <div class="card-body">
       <div class="posts-card__title">
@@ -136,7 +140,7 @@ function postCardDefault() {
   <div class="card posts-card">
 
     <img onclick="window.location.href = '<?php the_permalink() ?>';" class="card-img-top"
-      src="<?php if(has_post_thumbnail()) { echo get_the_post_thumbnail_url();} else { echo get_theme_file_uri("/images/default.jpg");} ?>" />
+      src="<?php if(has_post_thumbnail()) { echo get_the_post_thumbnail_url();} else { echo get_theme_file_uri("/images/default.webp");} ?>" />
 
     <div class="card-body">
       <div class="posts-card__title">

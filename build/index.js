@@ -2274,15 +2274,13 @@ class Funtionality {
 
     if (!localStorage.getItem("darkMode")) {
       localStorage.setItem("darkMode", "false");
-      switchLightMode();
+      switchLightMode(false);
     } else if (count == 0) {
       if (localStorage.getItem("darkMode") == "true") {
-        switchDarkMode();
+        switchDarkMode(false);
       } else {
-        switchLightMode();
+        switchLightMode(false);
       }
-
-      count = 1;
     }
   } // scroll functions
 

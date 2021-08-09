@@ -1,5 +1,5 @@
 <footer class="footer">
-  <div class="footer__background"></div>
+  <div style="background-image: url(<?php  echo get_theme_file_uri("/images/contact.webp") ?>);" class="footer__background"></div>
   <div class="footer__details d-none d-md-flex">
     <h1 class="titleStyle2">Contact Us</h1>
     <p>
@@ -21,7 +21,7 @@
     <hr />
     <div>
       <h2><i class="fas fa-mobile-alt"></i> Give us a ring</h2>
-      <p>Sricharan +91 6300-499-255 04:30 - 16:30 (GMT)</p>
+      <p>Sricharan +91 7032-259-552 04:30 - 16:30 (GMT)</p>
     </div>
   </div>
 

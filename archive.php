@@ -8,12 +8,12 @@ $category = get_category( get_query_var( 'cat' ) );?>
     <img src="<?php
     if(is_category() and (function_exists('z_taxonomy_image_url'))){
       if(empty(z_taxonomy_image_url($category->term_id))){
-        echo get_theme_file_uri("/images/default.jpg"); 
+        echo get_theme_file_uri("/images/default.webp"); 
       } else{
         echo z_taxonomy_image_url($category->term_id);
       }
     } else {
-      echo get_theme_file_uri("/images/default.jpg");
+      echo get_theme_file_uri("/images/default.webp");
     }?>">
   </div>
 

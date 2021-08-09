@@ -22,7 +22,7 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
 
     <div onclick="window.location.href = '<?php the_permalink() ?>';" class="blogpage__highlights-main box-shadow">
       <div class="blogpage__highlights-main-image"
-        style="background-image: url('<?php if(has_post_thumbnail()) { echo get_the_post_thumbnail_url();} else { echo get_theme_file_uri("/images/default.jpg");} ?>');">
+        style="background-image: url('<?php if(has_post_thumbnail()) { echo get_the_post_thumbnail_url();} else { echo get_theme_file_uri("/images/default.webp");} ?>');">
       </div>
       <h1 class="blogpage__highlights-main-title">
         <?php the_title(); ?>
@@ -67,7 +67,7 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
       <div onclick="window.location.href = '<?php the_permalink() ?>';"
         class="blogpage__highlights-sub-card box-shadow-2">
         <img class="blogpage__highlights-sub-card-img"
-          src="<?php if(has_post_thumbnail()) { echo get_the_post_thumbnail_url();} else { echo get_theme_file_uri("/images/default.jpg");} ?>" />
+          src="<?php if(has_post_thumbnail()) { echo get_the_post_thumbnail_url();} else { echo get_theme_file_uri("/images/default.webp");} ?>" />
         <div class="blogpage__highlights-sub-card-details">
           <h1 class="blogpage__highlights-sub-card-details-title">
             <?php the_title(); ?>

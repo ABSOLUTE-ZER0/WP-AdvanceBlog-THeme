@@ -8,7 +8,7 @@ the_post(); ?>
             the_post_thumbnail();
           } else {
             ?>
-    <img src="<?php echo get_theme_file_uri("/images/default.jpg") ?>">
+    <img src="<?php echo get_theme_file_uri("/images/default.webp") ?>">
     <?php
           } ?>
   </div>

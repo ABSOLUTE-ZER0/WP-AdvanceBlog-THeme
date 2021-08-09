@@ -17,12 +17,12 @@
           $featured -> the_post(); ?>
 
         <div class="slideshow__carousel-data carousel-item">
-          <div class="slideshow__carousel-data-img-filter">
+          <div class="slideshow__carousel-data-img-filter wmu-preview-img-parent">
             <?php if(has_post_thumbnail()){
             the_post_thumbnail();
           } else {
             ?>
-            <img src="<?php echo get_theme_file_uri("/images/default.jpg")?>">
+            <img src="<?php echo get_theme_file_uri("/images/default.webp")?>">
             <?php }; ?>
           </div>
           <div class="carousel-caption slideshow__carousel-data-captions">
@@ -52,7 +52,7 @@
       </div>
 
       <div class="slideshow__waves">
-        <img class="slideshow__waves-img" src="<?php echo get_theme_file_uri("images/slideshow-waves-light.png") ?>" />
+        <img class="slideshow__waves-img" src="<?php echo getSlideshowFilter() ?>" />
       </div>
     </div>
   </div>
@@ -63,9 +63,10 @@
       <div class="about">
         <div class="about__short">
           <div class="about__short-card">
-            <img src=<?php echo get_theme_file_uri("images/knowledge.png"); ?> alt="knowledge-img" />
+            <img src=<?php echo get_theme_file_uri("images/knowledge.webp"); ?> alt="knowledge-img" />
             <h1>knowledge</h1>
-            <p>We aim to deliver information ranging from gaming to coding a game and suggestions for dressing you and your food!</p>
+            <p>We aim to deliver information ranging from gaming to coding a game and suggestions for dressing you and
+              your food!</p>
           </div>
           <div class="about__short-card">
             <img src=<?php echo get_theme_file_uri("images/quality.png"); ?> alt="quality-img" />
@@ -86,7 +87,8 @@
         </div>
 
         <div class="about__us">
-          <div class="about__us-background"></div>
+          <div style="background-image: url(<?php  echo get_theme_file_uri("/images/about-us.webp") ?>);"
+            class="about__us-background"></div>
           <h1 class="titleStyle2">About Us</h1>
           <p>
             At this time of age where everyone believes in free knowledge

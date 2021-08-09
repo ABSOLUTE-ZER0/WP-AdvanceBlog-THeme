@@ -5,7 +5,7 @@
   height: 100vh;
 
   &__form {
-    flex: 1;
+    flex: 1; 
     align-self: center;
     margin: 0 5rem;
     color: var(--color-text);
@@ -17,7 +17,7 @@
 
   &__image {
     flex: 1;
-    background-image: url("../images/contactus.jpg");
+    background-image: var(--contact-bg);
     height: 100vh;
     background-size: cover;
     background-position: center;
@@ -28,7 +28,7 @@
     justify-content: center;
     position: relative;
 
-    &-opacity {
+    &-opacity { 
       width: 100%;
       height: 100vh;
       background: var(--color-contact-filter);
@@ -74,7 +74,7 @@
     &__form {
       padding: 0 5rem;
       margin: 0;
-      background-image: url("../images/contactus.jpg");
+      background-image: var(--contact-bg);
       height: 100vh;
       background-size: cover;
       background-position: center;
