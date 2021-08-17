@@ -646,7 +646,8 @@
 
 //likebutton
 
-.like-button {
+.like-button,
+.like-button-redirect {
   border-radius: 1rem;
   background-color: var(--color-text);
   padding: 1rem 2rem;
@@ -662,7 +663,7 @@
 
   i {
     font-size: 3rem;
-    color: var(--color-active);
+    color: var(--color-active); 
     display: none;
   }
 
@@ -713,10 +714,13 @@
     height: 5rem !important;
   }
 
-  * {
-    color: var(--color-text);
+  img{
     max-width: 100% !important;
     height: auto;
+  }
+
+  * {
+    color: var(--color-text);
   }
 
   p {
@@ -799,7 +803,12 @@
     margin-bottom: 1rem;
     font-weight: 600;
     font-size: 2rem;
-    color: var(--color-active);
+  }
+
+  blockquote{
+    border-left: .25em solid;
+    margin: 0 0 1.75em;
+    padding-left: 1em;
   }
 
   strong,
@@ -812,5 +821,42 @@
     font-size: 1.3rem;
     font-weight: 700;
     color: var(--color-active);
+  }
+}
+
+.wpforms-container {
+  .wpforms-field-container {
+    .wpforms-field {
+      input,
+      textarea {
+        background-color: var(--color-card) !important;
+        border: 0 !important;
+        border-bottom: 1px solid black !important;
+        color: var(--color-text) !important;
+        resize: none;
+
+        &:focus {
+          border-bottom-color: var(--color-hover) !important;
+          transform: scale(1.02);
+        }
+      }
+    }
+  }
+
+  .wpforms-submit-container {
+    button {
+      margin-left: auto !important;
+      display: block !important;
+      background-color: var(--color-hover) !important;
+      border-radius: 1rem !important;
+      border: 1px solid var(--color-hover) !important;
+      color: var(--color-text) !important;
+      font-size: 1.5rem !important;
+
+      &:hover {
+        color: var(--color-hover) !important;
+        background-color: var(--color-card) !important;
+      }
+    }
   }
 }

@@ -99,7 +99,7 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
       <?php if($paged == 1){ ?>
       <div class="blogpage__main-content-categories">
         <h1 class="titleStyle2">Top Categories</h1>
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <div class="row row-cols-1 row-cols-md-1 row-cols-lg-3 g-4">
 
           <?php $allCategories = get_categories( array(
               'orderby'    => 'count',

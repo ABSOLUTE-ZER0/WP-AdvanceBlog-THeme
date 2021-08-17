@@ -44,20 +44,12 @@ function addLike($data) {
         )),
       "status" => "liked"
       );
-        
     } else {
       die("Post already liked!");
     }
-
-
-
   } else {
-
     die("Only logged in users can like a post!");
-
   }
-
-
 }
 
 function deleteLike($data) {

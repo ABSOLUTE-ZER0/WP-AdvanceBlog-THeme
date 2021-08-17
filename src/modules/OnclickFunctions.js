@@ -26,6 +26,7 @@ class OnclickFunctions {
     );
 
     this.likeButton = document.querySelector(".like-button");
+    this.likeButtonRedirect = document.querySelector(".like-button-redirect");
     this.likeButtonIcon = document.querySelector(".like-button>i");
 
     this.searchOverlayOpen = false;
@@ -95,6 +96,17 @@ class OnclickFunctions {
     if (this.likeButton) {
       this.likeButton.addEventListener("click", () => this.toggleLike());
     }
+
+    if (this.likeButtonRedirect) {
+      this.likeButtonRedirect.addEventListener("click", () =>
+        this.loginRedirect()
+      );
+    }
+  }
+
+  loginRedirect() {
+    const url = this.likeButtonRedirect.dataset.redirect;
+    window.open(url, "_self");
   }
 
   toggleLike() {
@@ -127,10 +139,8 @@ class OnclickFunctions {
       );
 
       if (response.data.status == "liked") {
-        currentLikeButton.setAttribute("data-likeid", response.data.id )
+        currentLikeButton.setAttribute("data-likeid", response.data.id);
       }
-
-
     } catch (error) {
       console.error(error);
     }
@@ -144,9 +154,10 @@ class OnclickFunctions {
       let config = {
         headers: {
           "X-WP-Nonce": blogData.nonce,
-        },data: {
-          "likeId": currentLikeButton.dataset.likeid,
-        }
+        },
+        data: {
+          likeId: currentLikeButton.dataset.likeid,
+        },
       };
 
       const response = await axios.delete(
@@ -155,7 +166,7 @@ class OnclickFunctions {
       );
 
       if (response.data == "unliked") {
-        currentLikeButton.setAttribute("data-likeid", '')
+        currentLikeButton.setAttribute("data-likeid", "");
       }
     } catch (error) {
       console.error(error);

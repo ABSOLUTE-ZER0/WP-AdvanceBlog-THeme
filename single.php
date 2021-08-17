@@ -65,12 +65,11 @@ the_post(); ?>
 
             if($checkLiked->found_posts){
               $userLiked = true;
-            };
-          }
+            }; ?>
 
-          ?>
-
-          <span data-postid="<?php the_ID() ?>" data-likeid="<?php if($checkLiked->found_posts) echo $checkLiked->posts[0]->ID; ?>" class="like-button <?php if($userLiked) echo 'liked' ?>">
+          <span data-postid="<?php the_ID() ?>"
+            data-likeid="<?php if(isset($checkLiked) && $checkLiked->found_posts) echo $checkLiked->posts[0]->ID; ?>"
+            class="like-button <?php if($userLiked) echo 'liked' ?>">
             <i class="fa fa-heart"></i>
 
             <i class="fa fa-heart-o"><span>
@@ -78,6 +77,22 @@ the_post(); ?>
               ?>
               </span></i>
           </span>
+
+          <?php
+         } else { ?>
+
+          <span data-redirect="<?php echo wp_login_url() ?>" class="like-button-redirect">
+            <i class="fa fa-heart-o"><span>
+                <?php echo $likeCount->found_posts;
+              ?>
+              </span></i>
+          </span>
+
+
+          <?php }
+          ?>
+
+
         </div>
       </div>
 
